@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <NuxtLayout>
     <NuxtPage />
-  </div>
+  </NuxtLayout>
 </template>
 
 <style lang="scss">
@@ -13,19 +13,37 @@ const { $client } = useNuxtApp();
 
 const fetchProjects = async ($client) => {
   try {
-    const data = await $client.getEntries()
-    const formattedData = data.items.map((item) => ({
+    const { data: projets } = await useAsyncData('projets', () => $client.getEntries({ content_type: "projets" }));
+
+    const formattedData = projets._rawValue.items.map((item) => ({
       title: item.fields.title,
     }));
     return formattedData;
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching projets:', error);
     return [];
   }
 };
 
-fetchProjects($client).then((projets) => {
-  useProjects().value = projets;
+fetchProjects($client).then((dispo) => {
+  useProjects().value = dispo;
+});
+
+const fetchDispo = async ($client) => {
+  try {
+    const { data: dispo } = await useAsyncData('dispo', () => $client.getEntries({ content_type: "dispo" }));
+    const formattedData = dispo._rawValue.items.map((item) => ({
+      free: item.fields.free,
+    }));
+    return formattedData;
+  } catch (error) {
+    console.error('Error fetching dispo:', error);
+    return [];
+  }
+};
+
+fetchDispo($client).then((dispo) => {
+  useDispo().value = dispo;
 });
 
 </script>

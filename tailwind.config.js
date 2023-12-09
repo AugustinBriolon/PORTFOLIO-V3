@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './components/**/*.{js,vue,ts}',
     './layouts/**/*.vue',
@@ -11,32 +12,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: '#333333',
-        white: '#ffffff',
-        gold: '#a7904a',
-        gray: '#DBE1EA',
-      },
-      padding: {
-        'x-default': 'clamp(20px, 8vw, 100px)',
-        'y-default': 'clamp(20px, 8vh, 100px)',
-      },
-      margin: {
-        'x-default': 'clamp(20px, 8vw, 100px)',
-        'y-default': 'clamp(20px, 8vh, 100px)',
-      },
-      height: {
-        'screen-header': 'calc(100vh - 90px)',
-      },
-      spacing: {
-        'x-default': 'clamp(20px, 8vw, 100px)',
-        'y-default': 'clamp(20px, 8vh, 100px)',
+        black: '#0F172A',
+        white: '#F8FAFC',
+        gray: '#F5F5F5',
+        'light-grey': '#9B9B9B',
+        'dark-blue': '#1E293B',
+        'light-blue': '#C0E4F8',
+        green: '#6DDFA1',
+        red: '#F96E46'
       },
       borderRadius: {
         small: '8px',
-        medium: '14px',
+        medium: '18px',
       },
       maxWidth: {
         default: '1280px',
+      },
+
+      height: {
+        'screen-header': 'calc(100vh - 90px)',
       },
       minHeight: {
         'screen-header': 'calc(100vh - 90px)',

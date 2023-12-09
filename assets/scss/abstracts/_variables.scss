@@ -1,22 +1,15 @@
 @font-face {
-  font-family: 'Michroma';
-  src: url('/fonts/Michroma.ttf') format('truetype');
-  font-display: auto;
-}
-@font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter.ttf') format('truetype');
   font-display: auto;
 }
 
 // Colors
-$color-white: #fff;
-$color-black: #333;
-$color-gold: #a7904a;
-$color-gray: #dbe1ea;
+$color-white: #F8FAFC;
+$color-black: #0F172A;
+$color-gray: #F5F5F5; 
 
 // Fonts
-$font-michroma: 'Michroma';
 $font-inter: 'Inter';
 $font-thin: 100;
 $font-extra-light: 200;
