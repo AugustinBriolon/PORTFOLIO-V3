@@ -17,6 +17,10 @@ const fetchProjects = async ($client) => {
 
     const formattedData = projets._rawValue.items.map((item) => ({
       title: item.fields.title,
+      descriptionfr: item.fields.descriptionfr,
+      descriptionen: item.fields.descriptionen,
+      image: item.fields.img,
+      // techno: item.fields.techno,
     }));
     return formattedData;
   } catch (error) {

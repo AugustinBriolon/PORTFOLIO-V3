@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "nuxt": "^3.8.0",
+    "nuxt-calendly": "^0.1.17",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "tailwindcss": "^3.3.5"

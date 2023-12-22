@@ -13,10 +13,11 @@ module.exports = {
     extend: {
       colors: {
         black: '#0F172A',
-        white: '#F8FAFC',
+        white: '#f1f9fe',
         gray: '#F5F5F5',
         'light-grey': '#9B9B9B',
-        'dark-blue': '#1E293B',
+        blue: '#47b5e9',
+        'dark-blue': '#0d2d44',
         'light-blue': '#C0E4F8',
         green: '#6DDFA1',
         red: '#F96E46'
