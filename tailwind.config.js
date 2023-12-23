@@ -29,12 +29,15 @@ module.exports = {
       maxWidth: {
         default: '1280px',
       },
-
       height: {
         'screen-header': 'calc(100vh - 90px)',
       },
       minHeight: {
         'screen-header': 'calc(100vh - 90px)',
+      },
+      backgroundImage: {
+        'me': "url('/images/me.png')",
+        'meComputer': "url('/images/meComputer.png')",
       },
     },
   },

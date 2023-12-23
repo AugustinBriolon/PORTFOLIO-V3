@@ -1,6 +1,6 @@
 <template>
   <Container class="justify-center">
-    <h2 class="whitespace-nowrap">{{ localHour }} <span class="localHour">:</span> {{ localMinutes }} {{ localAMPM }}</h2>
+    <h3 class="whitespace-nowrap">{{ localHour }} <span class="localHour">:</span> {{ localMinutes }} {{ localAMPM }}</h3>
   </Container>
 </template>
 

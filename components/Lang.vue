@@ -1,6 +1,6 @@
 <template>
   <Container class="justify-center">
-    <h2>FR / EN</h2>
+    <h3>FR / EN</h3>
   </Container>
 </template>
 

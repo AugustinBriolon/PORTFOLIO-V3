@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "BEL Bureau d'Études Legavre",
+      title: "Augustin Briolon",
       htmlAttrs: {
         lang: 'fr',
       },
@@ -12,13 +12,13 @@ export default defineNuxtConfig({
         { name: 'msapplication-TileColor', content: '#a7904a' },
         { name: 'theme-color', content: '#ffffff' },
         { name: 'keywords', content: '' },
-        { hid: 'og:title', property: 'og:title', content: '' },
-        { hid: 'og:description', property: 'og:description', content: '' },
+        { hid: 'og:title', property: 'og:title', content: 'Augustin Briolon' },
+        { hid: 'og:description', property: 'og:description', content: 'Développeur Web' },
         { hid: 'og:image', property: 'og:image', content: '/ogimage.png' },
-        { hid: 'og:url', property: 'og:url', content: '' },
+        { hid: 'og:url', property: 'og:url', content: 'https://august1.dev' },
       ],
       link: [
-        { rel: 'canonical', href: 'https://www.be-legavre.com/' },
+        { rel: 'canonical', href: 'https://august1.dev' },
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
@@ -49,7 +49,6 @@ export default defineNuxtConfig({
   // ssr: true,
   // DEV
   ssr: false,
-  modules: ["nuxt-calendly"],
   devtools: { enabled: true },
   css: ['@/css/main.css'],
   vite: {
@@ -59,11 +58,6 @@ export default defineNuxtConfig({
         '@': '/assets',
       },
     },
-  },
-  calendly: {
-    isEnabled: true,
-    loadWidgetCSS: true,
-    loadWidgetCloseIconSvg: true
   },
   postcss: {
     plugins: {

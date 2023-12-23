@@ -3,7 +3,7 @@
     <div class="flex flex-col w-full h-full relative overflow-x-scroll" ref="slider">
       <div class="flex h-full absolute" :style="`padding-left: ${paddingProjects}px`">
         <Container v-for="(project, index) in computedProjects" :key="index" ref="sliderItem"
-          class="block relative aspect-[2/3]">
+          class="relative w-full min-w-[800px]">
           <NuxtLink :to="`/${project.title}`" class="h-full flex flex-col justify-between">
             <h2 >{{ project.title }}</h2>
             <p >{{ project.descriptionfr }}</p>
@@ -55,7 +55,6 @@ export default {
   },
   computed: {
     computedProjects() {
-      console.log(useProjects().value)
       return useProjects().value;
     }
   },
