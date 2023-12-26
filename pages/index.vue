@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto h-screen overflow-hidden h-full">
+  <section class="flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto h-screen lg:overflow-hidden pt-4 px-4">
     <div class="flex flex-col w-full lg:w-1/2">
       <Container class="flex-col space-y-4">
         <div class="w-full flex items-start justify-between">
@@ -11,15 +11,20 @@
         <h1>Augustin Briolon <br> Développeur Web</h1>
         <p>Je suis Augustin Briolon. Minimaliste dans le design et toujours partant pour un nouveau projet !</p>
       </Container>
-      <div class="flex flex-row items-center ">
-        <Contact />
+      <div class="flex flex-col items-start ">
         <!-- <Lang /> -->
+        <Contact />
+        <div class="hidden md:block">
+          <Social />
+        </div>
       </div>
-      <Social />
     </div>
 
     <div class="flex flex-col w-full lg:w-1/2">
       <Projets />
+      <div class="block md:hidden">
+          <Social />
+        </div>
     </div>
 
   </section>

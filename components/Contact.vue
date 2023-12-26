@@ -1,5 +1,5 @@
 <template>
-  <Container class="h-fit flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+  <Container class="flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
     <a href="https://calendly.com/augustin-briolon/presentation-de-votre-projet"
       class="w-fit flex items-center rounded-lg px-4 py-2 text-black bg-white">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
