@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto h-screen lg:overflow-hidden pt-4 px-4">
+  <section class="flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto min-h-screen lg:overflow-hidden">
     <div class="flex flex-col w-full lg:w-1/2">
       <Container class="flex-col space-y-4">
         <div class="w-full flex items-start justify-between">
@@ -23,8 +23,8 @@
     <div class="flex flex-col w-full lg:w-1/2">
       <Projets />
       <div class="block md:hidden">
-          <Social />
-        </div>
+        <Social />
+      </div>
     </div>
 
   </section>
@@ -36,14 +36,12 @@ export default {
   computed: {
     computedProjects() {
       return useProjects().value;
-    }
+    },
   },
 };
 </script>
 
-<style lang="scss">
-@import "@/scss/main.scss";
-
+<style >
 .dark .dark-fill {
   filter: invert(1) grayscale(100%) brightness(1.5);
 }

@@ -6,10 +6,11 @@ h5,
 h6 {
   font-family: $font-inter;
 }
+
 h1 {
   font-size: clamp(2rem, 4vw, 4rem);
   // line-height: clamp(3.2rem, 7vw, 5.4rem);
-  font-weight: $font-regular;
+  font-weight: $font-semi-bold;
 }
 h2 {
   font-size: clamp(2rem, 3vw, 4rem);
@@ -19,7 +20,7 @@ h2 {
 h3 {
   font-size: clamp(2rem, 2vw, 2rem);
   // line-height: clamp(2rem, 5vw, 3rem);
-  font-weight: $font-bold;
+  font-weight: $font-semi-bold;
 }
 h4 {
   font-size: clamp(1.5rem, 3vw, 2rem);
