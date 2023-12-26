@@ -1,31 +1,12 @@
 <template>
-  <div class="flex flex-col h-full">
-    <div class="flex flex-col w-full h-full relative overflow-x-scroll" ref="slider">
-      <div class="flex h-full absolute" :style="`padding-left: ${paddingProjects}px`">
-        <Container v-for="(project, index) in computedProjects" :key="index" ref="sliderItem"
-          class="relative w-full min-w-[800px]">
-          <NuxtLink :to="`/${project.title}`" class="h-full flex flex-col justify-between">
-            <h2 >{{ project.title }}</h2>
-            <p >{{ project.descriptionfr }}</p>
-            <img :src="`https:${project.image.fields.file.url}`" alt="" class="object-contain rounded-small" />
-          </NuxtLink>
-        </Container>
+  <div class="flex flex-col h-full overflow-y-auto noscroll">
+    <Container class="flex flex-col justify-between hover:scale-[1.02] transition-transform	" v-for="(project, index) in computedProjects" :key="index" :href="project.url">
+      <div class="flex items-center space-x-4">
+        <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-6 h-6" />
+        <h2>{{ project.title }}</h2>
       </div>
-    </div>
-    <div class="flex w-full justify-between">
-      <Container class="text-center w-1/2 cursor-pointer" @click="prev">
-        <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path stroke="#0d2d44" d="M8.75 15L1.75 8L8.75 1" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </Container>
-      <Container class="text-center w-1/2 cursor-pointer" @click="next">
-        <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path stroke="#0d2d44" d="M1.25 1L8.25 8L1.25 15" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </Container>
-    </div>
+      <p>{{ project.descriptionfr }}</p>
+    </Container>
   </div>
 </template>
 
@@ -37,24 +18,9 @@ export default {
       paddingProjects: 0,
     };
   },
-  methods: {
-    next() {
-      this.paddingProjects += this.$refs.sliderItem[0].$el.offsetWidth;
-      this.$refs.slider[0].scrollTo({
-        left: this.paddingProjects,
-        behavior: "smooth",
-      });
-    },
-    prev() {
-      this.paddingProjects -= this.$refs.sliderItem[0].$el.offsetWidth;
-      this.$refs.slider[0].scrollTo({
-        left: this.paddingProjects,
-        behavior: "smooth",
-      });
-    },
-  },
   computed: {
     computedProjects() {
+      console.log(useProjects().value);
       return useProjects().value;
     }
   },

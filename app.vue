@@ -20,7 +20,8 @@ const fetchProjects = async ($client) => {
       descriptionfr: item.fields.descriptionfr,
       descriptionen: item.fields.descriptionen,
       image: item.fields.img,
-      // techno: item.fields.techno,
+      icon: item.fields.icon,
+      url: item.fields.url,
     }));
     return formattedData;
   } catch (error) {

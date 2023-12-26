@@ -1,5 +1,5 @@
 <template>
-  <Container class="social items-center justify-evenly space-x-4">
+  <Container class="items-center justify-evenly space-x-4">
     <a href="https://www.linkedin.com/in/augustin-briolon/" target="_blank">
       <img src="/icons/linkedin.svg" alt="Logo Linkedin" class="dark-fill w-8 h-8">
     </a>
