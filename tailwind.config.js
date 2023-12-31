@@ -12,15 +12,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: '#0F172A',
+        black: '#111113',
         white: '#f1f9fe',
-        gray: '#F5F5F5',
-        'light-grey': '#9B9B9B',
-        blue: '#47b5e9',
-        'dark-blue': '#0d2d44',
-        'light-blue': '#C0E4F8',
-        green: '#6DDFA1',
-        red: '#F96E46'
+        // GREEN
+        'dark-green-light': '#6fd392',
+        'dark-green-dark': '#1a2c24',
+        'green-light': '#e9f6ec',
+        'green-dark': '#307f52',
+        // RED
+        red: '#d45453',
+        // BLUE
+        'dark-blue-light': '#a1b0ff',
+        'dark-blue-dark': '#1b2448',
+        'blue-light': '#eef2fd',
+        'blue-dark': '#415ac1',
       },
       borderRadius: {
         small: '8px',
@@ -39,6 +44,7 @@ module.exports = {
         'me': "url('/images/me.png')",
         'meComputer': "url('/images/meComputer.png')",
       },
+      darkMode: 'class',
     },
   },
   plugins: [],

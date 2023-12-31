@@ -1,26 +1,26 @@
 <template>
-  <div class="flex flex-col overflow-y-scroll h-fit max-h-screen noscroll">
+  <div class="flex flex-col overflow-y-scroll h-fit max-h-screen noscroll mt-6">
     <div class="sticky top-0 z-50 backdrop-blur-md rounded-medium">
-      <div class="overflow-x-scroll flex noscroll">
-        <Container class="flex flex-row items-center space-x-4" @click="filterProjects(all)">
+      <div class="overflow-x-scroll flex noscroll space-x-2 ml-2">
+        <div class="flex flex-row items-center space-x-4 p-2 border dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer" @click="filterProjects(all)">
           <p class="uppercase">all</p>
-        </Container>
-        <Container v-for="(projectTag, index) in uniqueTags" :key="index" class="flex flex-row items-center space-x-4"
+        </div>
+        <div v-for="(projectTag, index) in uniqueTags" :key="index" class="flex flex-row items-center space-x-4 p-2 border dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer"
           @click="filterProjects(projectTag)">
           <p class="uppercase">{{ projectTag }}</p>
-        </Container>
+        </div>
       </div>
     </div>
-    <Container class="flex flex-row justify-between hover:scale-[1.02] transition-transform space-x-4"
-      v-for="(project, index) in filteredProjects" :key="index" :href="project.url">
+    <Container class="flex-row justify-between items-center hover:scale-[1.02] transition-transform space-x-4"
+      v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
       <div class="flex flex-col items-start">
-        <div class="flex items-center space-x-4">
-          <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-6 h-6" />
-          <h3>{{ project.title }}</h3>
+        <div class="flex items-center space-x-2 my-1">
+          <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-8 h-8 dark:bg-white rounded-md p-1" />
+          <h3 class="leading-none">{{ project.title }}</h3>
         </div>
-        <p>{{ project.descriptionfr }}</p>
+        <p class="text-gray-500 dark:text-gray-400">{{ project.descriptionfr }}</p>
       </div>
-      <img :src="`https:${project.image.fields.file.url}`" :alt="project.title" class="w-20 h-auto object-contain" />
+      <img :src="`https:${project.image.fields.file.url}`" :alt="project.title" class="w-20 h-fit object-contain rounded-md" />
     </Container>
   </div>
 </template>
@@ -54,6 +54,9 @@ export default {
   },
   mounted() {
     this.projects;
+    this.uniqueTags;
+    this.filteredProjects;
+    this.projectImg;
   },
   methods: {
     filterProjects(tag) {
