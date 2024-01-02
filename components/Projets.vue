@@ -18,7 +18,7 @@
       <Container class="flex-row justify-between items-center hover:scale-[1.02] transition-transform space-x-4"
         v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
         <div class="flex flex-col items-start">
-          <div class="flex items-center space-x-2 my-1">
+          <div class="flex items-start space-x-2 my-1">
             <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title"
               class="w-8 h-8 dark:bg-white rounded-md p-1" />
             <h3 class="leading-none">{{ project.title }}</h3>
