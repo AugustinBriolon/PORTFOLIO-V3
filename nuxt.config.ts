@@ -133,6 +133,9 @@ export default defineNuxtConfig({
   // DEV
   // ssr: false,
   modules: ['nuxt-calendly'],
+  build: {
+    transpile: ['nuxt-calendly'],
+  },
   devtools: { enabled: true },
   experimental: { appManifest: false },
   css: ['@/css/main.css'],
