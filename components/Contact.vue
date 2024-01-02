@@ -1,6 +1,6 @@
 <template>
   <div class="flex p-6 m-2 flex-col space-y-4">
-    <div class="flex space-x-4">
+    <div class="flex flex-row md:flex-col lg:flex-row space-x-4 md:space-x-0 lg:space-x-4 md:space-y-4 lg:space-y-0">
       <a href="https://calendly.com/augustin-briolon/presentation-de-votre-projet"
         class="w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark ">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -10,26 +10,38 @@
         </svg>
         Prendre rdv
       </a>
-      <a class="w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark "
-        href="mailto:augustin.briolon@gmail.com" target="_blank">
+      <div @click="openModal"
+        class="w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark cursor-pointer">
         <svg xmlns="http://www.w3.org/light0/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6 mr-2">
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
         </svg>
         M'envoyer un mail
-      </a>
+      </div>
     </div>
-    
-    <div v-if="computedDispo.length != 0" class="w-fit py-1 px-2 rounded-md flex flex-row items-center justify-start space-x-4" :class="computedDispo[0].free ? 'bg-green-light dark:bg-dark-green-dark text-green-dark dark:text-dark-green-light' : 'bg-red'">
+    <div v-if="computedDispo.length != 0"
+      class="w-fit py-1 px-2 rounded-md flex flex-row items-center justify-start space-x-4"
+      :class="computedDispo[0].free ? 'bg-green-light dark:bg-dark-green-dark text-green-dark dark:text-dark-green-light' : 'bg-red-light dark:bg-dark-red-dark text-red-dark dark:text-dark-red-light'">
       <p>{{ computedDispo[0].free ? "Disponible pour une mission" : "Trop de travail en ce moment..." }}</p>
     </div>
   </div>
+  <FormModal :show="modalVisible" @update:show="modalVisible = $event" />
 </template>
 
 <script>
 export default {
   name: "Contact",
+  data() {
+    return {
+      modalVisible: false,
+    };
+  },
+  methods: {
+    openModal() {
+      this.modalVisible = true;
+    },
+  },
   computed: {
     computedDispo() {
       return useDispo().value;

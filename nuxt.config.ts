@@ -50,6 +50,7 @@ export default defineNuxtConfig({
   // DEV
   ssr: false,
   devtools: { enabled: true },
+  experimental: { appManifest: false },
   css: ['@/css/main.css'],
   vite: {
     resolve: {

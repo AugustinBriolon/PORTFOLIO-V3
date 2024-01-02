@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto min-h-screen lg:overflow-hidden">
-    <div class="flex flex-col w-full lg:w-1/2">
+    <div class="flex flex-col w-full md:w-1/2">
       <div class="flex p-6 m-2 flex-col space-y-4 text-black dark:text-white">
         <div class="w-full flex items-start justify-between ">
           <div
@@ -18,8 +18,7 @@
         </div>
       </div>
     </div>
-
-    <div class="flex flex-col w-full lg:w-1/2">
+    <div class="flex flex-col w-full md:w-1/2 relative">
       <Projets />
       <div class="block md:hidden">
         <Social />

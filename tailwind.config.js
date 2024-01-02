@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       colors: {
         black: '#111113',
+        'black-light': '#18191b',
         white: '#f1f9fe',
         // GREEN
         'dark-green-light': '#6fd392',
@@ -20,7 +21,10 @@ module.exports = {
         'green-light': '#e9f6ec',
         'green-dark': '#307f52',
         // RED
-        red: '#d45453',
+        'dark-red-light': '#ff8fa8',
+        'dark-red-dark': '#341726',
+        'red-light': '#fceaf0',
+        'red-dark': '#ba3263',
         // BLUE
         'dark-blue-light': '#a1b0ff',
         'dark-blue-dark': '#1b2448',

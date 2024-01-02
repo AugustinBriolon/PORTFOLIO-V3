@@ -1,27 +1,60 @@
 <template>
-  <div class="flex flex-col overflow-y-scroll h-fit max-h-screen noscroll mt-6">
-    <div class="sticky top-0 z-50 backdrop-blur-md rounded-medium">
-      <div class="overflow-x-scroll flex noscroll space-x-2 ml-2">
-        <div class="flex flex-row items-center space-x-4 p-2 border dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer" @click="filterProjects(all)">
-          <p class="uppercase">all</p>
-        </div>
-        <div v-for="(projectTag, index) in uniqueTags" :key="index" class="flex flex-row items-center space-x-4 p-2 border dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer"
-          @click="filterProjects(projectTag)">
-          <p class="uppercase">{{ projectTag }}</p>
-        </div>
+  <div class="flex flex-col overflow-y-scroll h-fit max-h-screen noscroll px-6 py-6">
+    <div class="absolute pt-6 pl-2 w-[-webkit-fill-available] top-0 z-20 w bg-white dark:bg-black pb-2 overflow-x-scroll flex noscroll space-x-2 ">
+      <div
+        class="flex flex-row items-center space-x-4 p-2 border border-black dark:border-white dark:text-white bg-white hover:bg-blue-light dark:bg-black rounded-md cursor-pointer"
+        @click="filterProjects(all)">
+        <p class="uppercase">all</p>
+      </div>
+      <div v-for="(projectTag, index) in uniqueTags" :key="index" :class="[
+        'flex', 'flex-row', 'items-center', 'space-x-4', 'p-2', 'border', 'border-black', 'dark:border-white', 'dark:text-white',
+        { 'bg-blue-light dark:bg-dark-blue-dark': projectTag === currentTag, 'bg-white dark:bg-black': projectTag !== currentTag },
+        'hover:bg-blue-light', 'rounded-md', 'cursor-pointer'
+      ]" @click="filterProjects(projectTag)">
+        <p class="uppercase">{{ projectTag }}</p>
       </div>
     </div>
-    <Container class="flex-row justify-between items-center hover:scale-[1.02] transition-transform space-x-4"
-      v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
-      <div class="flex flex-col items-start">
-        <div class="flex items-center space-x-2 my-1">
-          <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-8 h-8 dark:bg-white rounded-md p-1" />
-          <h3 class="leading-none">{{ project.title }}</h3>
+    <div class="mt-12">
+      <Container class="flex-row justify-between items-center hover:scale-[1.02] transition-transform space-x-4"
+        v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
+        <div class="flex flex-col items-start">
+          <div class="flex items-center space-x-2 my-1">
+            <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title"
+              class="w-8 h-8 dark:bg-white rounded-md p-1" />
+            <h3 class="leading-none">{{ project.title }}</h3>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400">{{ project.descriptionfr }}</p>
         </div>
-        <p class="text-gray-500 dark:text-gray-400">{{ project.descriptionfr }}</p>
-      </div>
-      <img :src="`https:${project.image.fields.file.url}`" :alt="project.title" class="w-20 h-fit object-contain rounded-md" />
-    </Container>
+        <img :src="`https:${project.image.fields.file.url}`" :alt="project.title"
+          class="w-20 h-fit object-contain rounded-md" />
+      </Container>
+      <Container class="flex-row justify-between items-center hover:scale-[1.02] transition-transform space-x-4"
+        v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
+        <div class="flex flex-col items-start">
+          <div class="flex items-center space-x-2 my-1">
+            <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title"
+              class="w-8 h-8 dark:bg-white rounded-md p-1" />
+            <h3 class="leading-none">{{ project.title }}</h3>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400">{{ project.descriptionfr }}</p>
+        </div>
+        <img :src="`https:${project.image.fields.file.url}`" :alt="project.title"
+          class="w-20 h-fit object-contain rounded-md" />
+      </Container>
+      <Container class="flex-row justify-between items-center hover:scale-[1.02] transition-transform space-x-4"
+        v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
+        <div class="flex flex-col items-start">
+          <div class="flex items-center space-x-2 my-1">
+            <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title"
+              class="w-8 h-8 dark:bg-white rounded-md p-1" />
+            <h3 class="leading-none">{{ project.title }}</h3>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400">{{ project.descriptionfr }}</p>
+        </div>
+        <img :src="`https:${project.image.fields.file.url}`" :alt="project.title"
+          class="w-20 h-fit object-contain rounded-md" />
+      </Container>
+    </div>
   </div>
 </template>
 
