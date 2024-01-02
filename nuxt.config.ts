@@ -6,6 +6,9 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'fr',
       },
+      bodyAttrs: {
+        class:'bg-white dark:bg-black'
+      },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -133,9 +136,6 @@ export default defineNuxtConfig({
   // DEV
   // ssr: false,
   modules: ['nuxt-calendly'],
-  build: {
-    transpile: ['nuxt-calendly'],
-  },
   devtools: { enabled: true },
   experimental: { appManifest: false },
   css: ['@/css/main.css'],
