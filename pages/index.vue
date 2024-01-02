@@ -9,7 +9,7 @@
           <DarkMode />
         </div>
         <h1>Augustin Briolon</h1>
-        <p>Je suis Augustin Briolon. Minimaliste dans le design et toujours partant pour un nouveau projet !</p>
+        <p>Je suis Augustin Briolon. Minimaliste dans le design et toujours partant pour un nouveau projet ⬇️ ⬇️</p>
       </div>
       <div class="flex flex-col items-start ">
         <Contact />
