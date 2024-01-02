@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Augustin Briolon - Portfolio Développeur Web',
+      title: 'Augustin Briolon - Portfolio Développeur Web Front-End',
       htmlAttrs: {
         lang: 'fr',
       },
@@ -11,29 +11,97 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'msapplication-TileColor', content: '#a7904a' },
         { name: 'theme-color', content: '#ffffff' },
-        { hid: 'description', name: 'description', content: "Augustin Briolon, Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀" },
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            "Augustin Briolon, Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀",
+        },
+        {
+          hid: 'keyword',
+          name: 'keyword',
+          content: 'augustin, briolon, portfolio, développeur, web, front-end',
+        },
 
         // Open Graph
-        { hid: 'og:site_name', property: 'og:site_name', content: 'Augustin Briolon - Portfolio Développeur Web' },
-        { hid: 'og:title', property: 'og:title', content: 'Augustin Briolon - Portfolio Développeur Web' },
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'Augustin Briolon - Portfolio Développeur Web Front-End',
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'Augustin Briolon - Portfolio Développeur Web Front-End',
+        },
         { hid: 'og:locale', property: 'og:locale', content: 'fr_FR' },
-        { hid: 'og:description', property: 'og:description', content: "Augustin Briolon, Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀" },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            "Augustin Briolon, Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀",
+        },
         { hid: 'og:image', property: 'og:image', content: '/ogimage.png' },
         { hid: 'og:url', property: 'og:url', content: 'https://august1.dev' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
 
         // Twitter
-        { hid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' },
-        { hid: 'twitter:creator', property: 'twitter:creator', content: '@AugustinBriolon' },
-        { hid: 'twitter:title', property: 'twitter:title', content: 'Augustin Briolon - Portfolio Développeur Web' },
-        { hid: 'twitter:description', property: 'twitter:description', content: "Augustin Briolon, Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀" },
-        { hid: 'twitter:image', property: 'twitter:image', content: '/ogimage.png' },
-        { hid: 'twitter:url', property: 'twitter:url', content: 'https://august1.dev' },
-        { hid: 'twitter:site', property: 'twitter:site', content: '@AugustinBriolon' },
-        { hid: 'twitter:domain', property: 'twitter:domain', content: 'august1.dev' },
+        {
+          hid: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image',
+        },
+        {
+          hid: 'twitter:creator',
+          property: 'twitter:creator',
+          content: '@AugustinBriolon',
+        },
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: 'Augustin Briolon - Portfolio Développeur Web Front-End',
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content:
+            "Augustin Briolon, Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀",
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: '/ogimage.png',
+        },
+        {
+          hid: 'twitter:url',
+          property: 'twitter:url',
+          content: 'https://august1.dev',
+        },
+        {
+          hid: 'twitter:site',
+          property: 'twitter:site',
+          content: '@AugustinBriolon',
+        },
+        {
+          hid: 'twitter:domain',
+          property: 'twitter:domain',
+          content: 'august1.dev',
+        },
       ],
       link: [
         { rel: 'canonical', href: 'https://august1.dev' },
+        {
+          rel: 'preload',
+          href: '/fonts/Inter.ttf',
+          as: 'font',
+          type: 'font/ttf',
+          crossorigin: 'anonymous',
+        },
+        {
+          rel: 'shortcut icon',
+          href: '/favicon/favicon.ico',
+          type: 'image/x-icon',
+        },
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
