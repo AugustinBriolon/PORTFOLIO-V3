@@ -1,6 +1,7 @@
 <template>
-  <div class="flex flex-col overflow-y-scroll h-fit max-h-screen noscroll px-6 py-6">
-    <div class="absolute pt-6 pl-2 w-[-webkit-fill-available] top-0 z-20 w bg-white dark:bg-black pb-2 overflow-x-scroll flex noscroll space-x-2 ">
+  <div class="flex flex-col md:overflow-y-scroll h-fit md:max-h-screen noscroll px-6 py-6">
+    <div
+      class="absolute pt-6 pl-2 w-[-webkit-fill-available] top-0 z-20 w bg-white dark:bg-black pb-2 overflow-x-scroll flex noscroll space-x-2 ">
       <div
         class="flex flex-row items-center space-x-4 p-2 border border-black dark:border-white dark:text-white bg-white hover:bg-blue-light dark:bg-black rounded-md cursor-pointer"
         @click="filterProjects(all)">
@@ -15,7 +16,7 @@
       </div>
     </div>
     <div class="mt-12">
-      <Container class="flex-row justify-between items-center hover:scale-[1.02] transition-transform space-x-4"
+      <Container class="h-fit flex-row justify-between items-center md:hover:scale-[1.02] md:transition-transform space-x-4"
         v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
         <div class="flex flex-col items-start">
           <div class="flex items-start space-x-2 my-1">

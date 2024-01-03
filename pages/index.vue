@@ -20,7 +20,8 @@
     </div>
     <div class="flex flex-col w-full md:w-1/2 relative">
       <Projets />
-      <div class="block md:hidden">
+      <div class="flex flex-col items justify-center md:hidden">
+        <hr class="mx-8">
         <Social />
       </div>
     </div>
