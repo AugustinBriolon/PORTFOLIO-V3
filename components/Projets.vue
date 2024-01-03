@@ -16,15 +16,15 @@
       </div>
     </div>
     <div class="mt-12">
-      <Container class="h-fit flex-row justify-between items-center md:hover:scale-[1.02] md:transition-transform space-x-4"
+      <Container class="max-h-[170px] flex-row justify-between items-center md:hover:scale-[1.02] md:transition-transform space-x-4"
         v-for="(project, index) in filteredProjects" :key="index" :href="project.url" target="_blank">
         <div class="flex flex-col items-start">
           <div class="flex items-start space-x-2 my-1">
             <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title"
               class="w-8 h-8 dark:bg-white rounded-md p-1" />
-            <h3 class="leading-none">{{ project.title }}</h3>
+            <h3 class="leading-none line-clamp-2 md:line-clamp-none">{{ project.title }}</h3>
           </div>
-          <p class="text-gray-500 dark:text-gray-400">{{ project.descriptionfr }}</p>
+          <p :title="project.descriptionfr" class="text-gray-500 dark:text-gray-400 line-clamp-2 md:line-clamp-none">{{ project.descriptionfr }}</p>
         </div>
         <img :src="`https:${project.image.fields.file.url}`" :alt="project.title"
           class="w-20 h-fit object-contain rounded-md" />
