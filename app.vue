@@ -14,7 +14,7 @@ const { $client } = useNuxtApp();
 
 const fetchProjects = async ($client) => {
   try {
-    const { data: projets } = await useAsyncData('projets', () => $client.getEntries({ content_type: "projets" }));
+    const { data: projets } = await useAsyncData('projets', () => $client.getEntries({ content_type: "projets", order: "-fields.date"}));
 
     const formattedData = projets._rawValue.items.map((item) => ({
       title: item.fields.title,

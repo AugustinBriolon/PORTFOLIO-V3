@@ -54,7 +54,7 @@
               </label>
               <input type="email" name="email" id="email" ref="email"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full p-2.5 dark:bg-white dark:placeholder-gray-400 dark:text-black"
-                placeholder="name@company.com" required>
+                placeholder="johndoe@gmail.com" required>
               <span v-if="isError.email" class="!text-red-500 text-sm pt-2">Le mail est requis</span>
               <span v-if="isError.isValidEmail" class="!text-red-500 text-sm pt-2">Votre email n'est pas valide</span>
             </div>

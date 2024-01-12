@@ -21,7 +21,7 @@
     <div class="flex flex-col w-full md:w-1/2 relative">
       <Projets />
       <div class="flex flex-col items justify-center md:hidden">
-        <hr class="mx-8">
+        <hr class="mx-8 border-none h-[1px] bg-gray-200 ">
         <Social />
       </div>
     </div>
