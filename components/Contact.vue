@@ -1,8 +1,9 @@
 <template>
   <div class="flex p-6 m-2 flex-col space-y-4">
-    <div class="flex flex-col sm:flex-row md:flex-col lg:flex-row space-x-0 sm:space-x-4 md:space-x-0 lg:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 lg:space-y-0 cursor-pointer">
+    <div
+      class="flex flex-col sm:flex-row md:flex-col lg:flex-row space-x-0 sm:space-x-4 md:space-x-0 lg:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 lg:space-y-0 cursor-pointer">
       <div @click="handleCalendly"
-        class="w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark ">
+        class="tremor w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark ">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6 mr-2">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -11,7 +12,7 @@
         Prendre rdv
       </div>
       <div @click="openModal"
-        class="w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark cursor-pointer">
+        class="tremor w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark cursor-pointer">
         <svg xmlns="http://www.w3.org/light0/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6 mr-2">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -42,7 +43,7 @@ export default {
       this.modalVisible = true;
     },
     handleCalendly() {
-      const calendly =  useCalendly();
+      const calendly = useCalendly();
       calendly.initPopupWidget({
         url: 'https://calendly.com/augustin-briolon/presentation-de-votre-projet/30min'
       })
@@ -55,3 +56,58 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.tremor {
+  animation: tremor 10s infinite;
+}
+
+@keyframes tremor {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  90% {
+    transform: translate(0, 0);
+  }
+
+  91% {
+    transform: translate(-2px, -2px);
+  }
+
+  92% {
+    transform: translate(2px, 2px);
+  }
+
+  93% {
+    transform: translate(2px, -2px);
+  }
+
+  94% {
+    transform: translate(0, 0);
+  }
+
+  95% {
+    transform: translate(-2px, 0) scale(1.02);
+  }
+
+  96% {
+    transform: translate(2px, 0);
+  }
+
+  97% {
+    transform: translate(0, -2px);
+  }
+
+  98% {
+    transform: translate(0, 2px);
+  }
+
+  99% {
+    transform: translate(-2px, 2px);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}</style>

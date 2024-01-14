@@ -1,12 +1,13 @@
 <template>
-  <div class="flex flex-col md:overflow-y-scroll h-fit md:max-h-screen noscroll px-6 py-6">
+  <div class="flex flex-col md:overflow-y-scroll md:max-h-screen noscroll px-6 py-6">
     <div
-      class="absolute pt-6 w-[-webkit-fill-available] top-0 z-20 w bg-white dark:bg-black pb-2 overflow-x-scroll flex noscroll space-x-2 ">
+      class="absolute top-0 left-0 z-20 backdrop-blur-lg max-w-[100vw] pl-6 lg:pr-4 lg:py-4 overflow-x-scroll flex noscroll space-x-2">
       <div
         class="flex flex-row items-center space-x-4 p-2 border border-black dark:border-white dark:text-white bg-white hover:bg-blue-light dark:bg-black rounded-md cursor-pointer"
         @click="filterProjects(all)">
         <p class="uppercase">all</p>
       </div>
+
       <div v-for="(projectTag, index) in uniqueTags" :key="index" :class="[
         'flex', 'flex-row', 'items-center', 'space-x-4', 'p-2', 'border', 'border-black', 'dark:border-white', 'dark:text-white',
         { 'bg-blue-light dark:bg-dark-blue-dark': projectTag === currentTag, 'bg-white dark:bg-black': projectTag !== currentTag },
@@ -16,8 +17,8 @@
       </div>
     </div>
     <div class="mt-12 flex flex-col space-y-8">
-      <div class="flex flex-col justify-between items-start space-y-2" v-for="(project, index) in filteredProjects"
-        :key="index" >
+      <div class="flex flex-col justify-start h-fit items-left space-y-2" :ref="`projectRef${index}`"
+        v-for="(project, index) in filteredProjects" :key="index">
         <a :href="project.url" target="_blank">
           <img :src="`https:${project.image.fields.file.url}`" :alt="project.title"
             class="w-full h-fit object-contain rounded-md projectCursor" />
@@ -38,6 +39,7 @@
 </template>
 
 <script>
+import gsap from 'gsap';
 const all = 'all';
 
 export default {
@@ -45,6 +47,7 @@ export default {
   data() {
     return {
       currentTag: null,
+      tl: gsap.timeline(),
     };
   },
   computed: {
@@ -63,12 +66,22 @@ export default {
     filteredProjects() {
       return this.computeFilteredProjects();
     },
+    projectAnimation() {
+  
+    },
   },
   mounted() {
     this.projects;
     this.uniqueTags;
     this.filteredProjects;
     this.projectImg;
+    // this.projectAnimation;
+  },
+  onMounted() {
+    this.tl.from(this.$refs.projectRef0, {
+      opacity: 0,
+      duration: 5,
+    });
   },
   methods: {
     filterProjects(tag) {

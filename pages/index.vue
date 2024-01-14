@@ -11,7 +11,7 @@
         <h1>Augustin Briolon</h1>
         <h2>Je suis Augustin Briolon. Développeur sensible au design et toujours partant pour un nouveau projet ⬇️ ⬇️</h2>
       </div>
-      <div class="flex flex-col items-start ">
+      <div class="flex flex-col items-start">
         <Contact />
         <div class="hidden md:block">
           <Social />
