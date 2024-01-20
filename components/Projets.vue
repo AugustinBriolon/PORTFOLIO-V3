@@ -17,22 +17,41 @@
       </div>
     </div>
     <div class="mt-12 flex flex-col space-y-8">
-      <div class="flex flex-col justify-start h-fit items-left space-y-2" :ref="`projectRef${index}`"
-        v-for="(project, index) in filteredProjects" :key="index">
-        <a :href="project.url" target="_blank">
-          <img :src="`https:${project.image.fields.file.url}`" :alt="project.title"
-            class="w-full h-fit object-contain rounded-md projectCursor" />
-        </a>
-        <div class="flex flex-col items-start">
-          <div class="flex items-start space-x-2">
-            <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title"
-              class="w-8 h-8 dark:bg-white rounded-md p-1" />
-            <h3 class="leading-none line-clamp-2 md:line-clamp-none text-black dark:text-white ">{{ project.title }}</h3>
+
+      <div
+      :class="[
+        // { 'bg-green-card': index % 3 === 0, 'bg-blue-card': index % 3 === 1, 'bg-purple-card': index % 3 === 2 }
+      ]"
+      class=" flex flex-col items-start rounded-xl p-4 space-y-6 cardProject h-fit bg-green-card"
+      v-for="(project, index) in filteredProjects"
+      :key="index"
+    >
+        <a :href="project.url" target="_blank" class="space-y-6 w-full">
+          <div class="w-full flex justify-between items-center">
+            <div class="bg-white rounded-full p-1">
+              <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-5 h-5" />
+            </div>
+            <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="arrowIcon">
+              <path fill="currentColor"
+                d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
+            </svg>
           </div>
-          <p :title="project.descriptionfr"
-            class="text-gray-500 dark:text-gray-400 line-clamp-2 md:line-clamp-none font-inter-light ">{{
-              project.descriptionfr }}</p>
-        </div>
+          <h3 class="leading-none line-clamp-2 md:line-clamp-none text-black dark:text-white ">{{ project.title }}</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-projets items-start gap-6">
+            <div class="flex flex-col items-start justify-center">
+              <p class="text-gray-500 text-sm">Date</p>
+              <p class="n whitespace-nowrap">{{ formatProjectDate[index] }}</p>
+            </div>
+            <div class="flex flex-col items-start justify-center">
+              <p class="text-gray-500 text-sm">Type</p>
+              <p class="capitalize">{{ project.tag[0] }}</p>
+            </div>
+            <div class="flex flex-col items-start justify-center col-span-2 sm:col-span-1 md:col-span-3 lg:col-auto">
+              <p class="text-gray-500 text-sm">Description</p>
+              <p class="line-clamp-1" :title="project.descriptionfr">{{ project.descriptionfr }}</p>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -47,6 +66,7 @@ export default {
   data() {
     return {
       currentTag: null,
+      date: null,
       tl: gsap.timeline(),
     };
   },
@@ -66,22 +86,19 @@ export default {
     filteredProjects() {
       return this.computeFilteredProjects();
     },
-    projectAnimation() {
-  
+    formatProjectDate() {
+      return this.projects.map((project) => {
+        const date = new Date(project.date);
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        const formatDate = new Intl.DateTimeFormat("fr-FR", options).format(date);
+        return formatDate
+      });
     },
   },
   mounted() {
     this.projects;
     this.uniqueTags;
     this.filteredProjects;
-    this.projectImg;
-    // this.projectAnimation;
-  },
-  onMounted() {
-    this.tl.from(this.$refs.projectRef0, {
-      opacity: 0,
-      duration: 5,
-    });
   },
   methods: {
     filterProjects(tag) {
@@ -101,8 +118,19 @@ export default {
 </script>
 
 <style scoped>
-.projectCursor {
-  cursor: url("data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='%23000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 18L18 6m0 0H9m9 0v9'/%3E%3C/svg%3E") 0 0,
-    auto;
+.cardProject .arrowIcon {
+  transition: transform 0.2s ease-in-out;
 }
+
+.cardProject:hover .arrowIcon {
+  transform: translate(2px, -2px);
+}
+
+.bg-purple-card2 {
+  background: #79ed754d;
+  /* background-image: url('/images/grainyBg.svg'); */
+  /* background-attachment: fixed;
+  filter: contrast(150%) brightness(90%); */
+}
+
 </style>

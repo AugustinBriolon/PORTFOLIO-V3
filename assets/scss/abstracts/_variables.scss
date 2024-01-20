@@ -1,6 +1,7 @@
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter.ttf') format('truetype');
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Variable.ttf') format('truetype');
+  font-weight: 125 950;
   font-display: auto;
 }
 
@@ -9,7 +10,7 @@ $color-white: #f1f9fe;
 $color-black: #111113;
 
 // Fonts
-$font-inter: 'Inter';
+$font-inter: 'Switzer';
 $font-thin: 100;
 $font-extra-light: 200;
 $font-light: 300;

@@ -24,6 +24,7 @@ const fetchProjects = async ($client) => {
       icon: item.fields.icon,
       url: item.fields.url,
       tag: item.fields.tag,
+      date: item.fields.date,
     }));
     return formattedData;
   } catch (error) {

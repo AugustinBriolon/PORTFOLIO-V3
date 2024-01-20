@@ -20,6 +20,7 @@ module.exports = {
         'dark-green-dark': '#1a2c24',
         'green-light': '#e9f6ec',
         'green-dark': '#307f52',
+        'green-card': '#78ED75',
         // RED
         'dark-red-light': '#ff8fa8',
         'dark-red-dark': '#341726',
@@ -30,6 +31,9 @@ module.exports = {
         'dark-blue-dark': '#1b2448',
         'blue-light': '#eef2fd',
         'blue-dark': '#415ac1',
+        'blue-card': '#0dccdd48',
+        // PURPLE
+        'purple-card': "#aa86ff46"
       },
       borderRadius: {
         small: '8px',
@@ -47,6 +51,9 @@ module.exports = {
       backgroundImage: {
         'me': "url('/images/me.png')",
         'meComputer': "url('/images/meComputer.png')",
+      },
+      gridTemplateColumns: {
+        'projets': '85px 85px 1fr',
       },
       darkMode: 'class',
     },
