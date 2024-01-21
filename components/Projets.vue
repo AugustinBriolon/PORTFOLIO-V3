@@ -3,52 +3,49 @@
     <div
       class="absolute top-0 left-0 z-20 backdrop-blur-lg max-w-[100vw] pl-6 lg:pr-4 lg:py-4 overflow-x-scroll flex noscroll space-x-2">
       <div
-        class="flex flex-row items-center space-x-4 p-2 border border-black dark:border-white dark:text-white bg-white hover:bg-blue-light dark:bg-black rounded-md cursor-pointer"
+        class="flex flex-row items-center space-x-4 p-2 border border-gray-300 dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer"
         @click="filterProjects(all)">
         <p class="uppercase">all</p>
       </div>
 
-      <div v-for="(projectTag, index) in uniqueTags" :key="index" :class="[
-        'flex', 'flex-row', 'items-center', 'space-x-4', 'p-2', 'border', 'border-black', 'dark:border-white', 'dark:text-white',
-        { 'bg-blue-light dark:bg-dark-blue-dark': projectTag === currentTag, 'bg-white dark:bg-black': projectTag !== currentTag },
-        'hover:bg-blue-light', 'rounded-md', 'cursor-pointer'
-      ]" @click="filterProjects(projectTag)">
+      <div v-for="(projectTag, index) in uniqueTags" :key="index"
+        class="flex flex-row items-center space-x-4 p-2 rounded-md cursor-pointer border border-gray-300 dark:border-white dark:text-white"
+        :class="[{ 'border-gray-600 dark:border-dark-blue-light': projectTag === currentTag }]"
+        @click="filterProjects(projectTag)">
         <p class="uppercase">{{ projectTag }}</p>
       </div>
     </div>
-    <div class="mt-12 flex flex-col space-y-8">
+    <div class="mt-14 flex flex-col space-y-8">
 
       <div
-      :class="[
-        // { 'bg-green-card': index % 3 === 0, 'bg-blue-card': index % 3 === 1, 'bg-purple-card': index % 3 === 2 }
-      ]"
-      class=" flex flex-col items-start rounded-xl p-4 space-y-6 cardProject h-fit bg-green-card"
-      v-for="(project, index) in filteredProjects"
-      :key="index"
-    >
+        class=" flex flex-col items-start rounded-xl p-4 space-y-6 cardProject h-fit  bg-white dark:bg-black border border-gray-200 dark:border-gray-500"
+        v-for="(project, index) in filteredProjects" :key="index">
         <a :href="project.url" target="_blank" class="space-y-6 w-full">
           <div class="w-full flex justify-between items-center">
-            <div class="bg-white rounded-full p-1">
+            <div class="bg-blue-light dark:bg-dark-blue-dark rounded-full p-1">
               <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-5 h-5" />
             </div>
-            <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="arrowIcon">
+            <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+              class="arrowIcon text-blue-dark dark:text-blue-dark">
               <path fill="currentColor"
                 d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
             </svg>
           </div>
-          <h3 class="leading-none line-clamp-2 md:line-clamp-none text-black dark:text-white ">{{ project.title }}</h3>
+          <h3 class="leading-none line-clamp-2 md:line-clamp-none text-black dark:text-blue-light">{{ project.title }}
+          </h3>
           <div class="grid grid-cols-2 sm:grid-cols-projets items-start gap-6">
             <div class="flex flex-col items-start justify-center">
-              <p class="text-gray-500 text-sm">Date</p>
-              <p class="n whitespace-nowrap">{{ formatProjectDate[index] }}</p>
+              <p class="text-blue-dark dark:text-blue-dark text-sm">Date</p>
+              <p class="whitespace-nowrap text-black dark:text-blue-light">{{ formatProjectDate[index] }}</p>
             </div>
             <div class="flex flex-col items-start justify-center">
-              <p class="text-gray-500 text-sm">Type</p>
-              <p class="capitalize">{{ project.tag[0] }}</p>
+              <p class="text-blue-dark dark:text-blue-dark text-sm">Type</p>
+              <p class="capitalize text-black dark:text-blue-light">{{ project.tag[0] }}</p>
             </div>
             <div class="flex flex-col items-start justify-center col-span-2 sm:col-span-1 md:col-span-3 lg:col-auto">
-              <p class="text-gray-500 text-sm">Description</p>
-              <p class="line-clamp-1" :title="project.descriptionfr">{{ project.descriptionfr }}</p>
+              <p class="text-blue-dark dark:text-blue-dark text-sm">Description</p>
+              <p class="line-clamp-1 text-black dark:text-blue-light" :title="project.descriptionfr">{{
+                project.descriptionfr }}</p>
             </div>
           </div>
         </a>
@@ -132,5 +129,4 @@ export default {
   /* background-attachment: fixed;
   filter: contrast(150%) brightness(90%); */
 }
-
 </style>

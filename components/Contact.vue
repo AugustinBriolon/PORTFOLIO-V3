@@ -68,46 +68,57 @@ export default {
   }
 
   90% {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
   }
 
+
   91% {
-    transform: translate(-2px, -2px);
+    transform: translate(-1px, -2px) rotate(-1deg);
   }
 
   92% {
-    transform: translate(2px, 2px);
+    transform: translate(-3px, 0px) rotate(1deg);
   }
 
   93% {
-    transform: translate(2px, -2px);
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  93% {
+    transform: translate(1px, -1px) rotate(1deg);
   }
 
   94% {
-    transform: translate(0, 0);
+    transform: translate(-1px, 2px) rotate(-1deg);
   }
 
   95% {
-    transform: translate(-2px, 0) scale(1.02);
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  95% {
+    transform: translate(3px, 1px) rotate(-1deg);
   }
 
   96% {
-    transform: translate(2px, 0);
+    transform: translate(-1px, -1px) rotate(1deg);
   }
 
   97% {
-    transform: translate(0, -2px);
+    transform: translate(1px, 2px) rotate(0deg);
   }
 
   98% {
-    transform: translate(0, 2px);
+    transform: translate(1px, 1px) rotate(0deg);
   }
 
   99% {
-    transform: translate(-2px, 2px);
+    transform: translate(0px, 1px) rotate(0deg);
   }
 
   100% {
     transform: translate(0, 0) scale(1);
   }
+
+
 }</style>
