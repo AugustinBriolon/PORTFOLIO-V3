@@ -9,7 +9,7 @@
       </div>
 
       <div v-for="(projectTag, index) in uniqueTags" :key="index"
-        class="flex flex-row items-center space-x-4 p-2 rounded-md cursor-pointer border border-gray-300 dark:border-white dark:text-white"
+        class="flex flex-row items-center space-x-4 p-2 rounded-md cursor-pointer border border-gray-300 dark:text-white"
         :class="[{ 'border-gray-600 dark:border-dark-blue-light': projectTag === currentTag }]"
         @click="filterProjects(projectTag)">
         <p class="uppercase">{{ projectTag }}</p>
@@ -22,7 +22,7 @@
         v-for="(project, index) in filteredProjects" :key="index">
         <a :href="project.url" target="_blank" class="space-y-6 w-full">
           <div class="w-full flex justify-between items-center">
-            <div class="bg-blue-light dark:bg-dark-blue-dark rounded-full p-1">
+            <div class="bg-white dark:bg-blue-light border border-gray-200 rounded-full p-1">
               <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-5 h-5" />
             </div>
             <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
