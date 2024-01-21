@@ -55,7 +55,6 @@
 </template>
 
 <script>
-import gsap from 'gsap';
 const all = 'all';
 
 export default {
@@ -64,7 +63,6 @@ export default {
     return {
       currentTag: null,
       date: null,
-      tl: gsap.timeline(),
     };
   },
   computed: {
