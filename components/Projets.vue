@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col md:overflow-y-scroll md:max-h-screen noscroll px-6 py-6">
     <div
-      class="absolute top-0 left-0 z-20 backdrop-blur-lg max-w-[100vw] pl-6 lg:pr-4 lg:py-4 overflow-x-scroll flex noscroll space-x-2">
+      class="absolute top-0 left-0 z-20 backdrop-blur-lg max-w-[100vw] pl-6 lg:pr-4 md:py-6 overflow-x-scroll flex noscroll space-x-2">
       <div
-        class="flex flex-row items-center space-x-4 p-2 border border-gray-300 dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer"
+        class="flex flex-row items-center p-2 border border-gray-300 dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer"
         @click="filterProjects(all)">
         <p class="uppercase">all</p>
       </div>
@@ -15,7 +15,7 @@
         <p class="uppercase">{{ projectTag }}</p>
       </div>
     </div>
-    <div class="mt-14 flex flex-col space-y-8">
+    <div class="mt-14 md:mt-[4.5rem] flex flex-col space-y-8">
 
       <div
         class=" flex flex-col items-start rounded-xl p-4 space-y-6 cardProject h-fit  bg-white dark:bg-black border border-gray-200 dark:border-gray-500"

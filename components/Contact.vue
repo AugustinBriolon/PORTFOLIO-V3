@@ -2,7 +2,7 @@
   <div class="flex p-6 m-2 flex-col space-y-4">
     <div
       class="flex flex-col sm:flex-row md:flex-col lg:flex-row space-x-0 sm:space-x-4 md:space-x-0 lg:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 lg:space-y-0 cursor-pointer">
-      <div @click="handleCalendly"
+      <div @click="handleCalendly" v-if="computedDispo.length !== 0 && computedDispo[0].free"
         class="tremor w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark ">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6 mr-2">
@@ -11,7 +11,7 @@
         </svg>
         Prendre rdv
       </div>
-      <div @click="openModal"
+      <div @click="openModal" v-if="computedDispo.length !== 0 && computedDispo[0].free"
         class="tremor w-fit flex items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark cursor-pointer">
         <svg xmlns="http://www.w3.org/light0/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6 mr-2">
@@ -24,7 +24,7 @@
     <div v-if="computedDispo.length != 0"
       class="w-fit py-1 px-2 rounded-md flex flex-row items-center justify-start space-x-4"
       :class="computedDispo[0].free ? 'bg-green-light dark:bg-dark-green-dark text-green-dark dark:text-dark-green-light' : 'bg-red-light dark:bg-dark-red-dark text-red-dark dark:text-dark-red-light'">
-      <p>{{ computedDispo[0].free ? "Disponible pour une mission" : "Trop de travail en ce moment..." }}</p>
+      <p>{{ computedDispo[0].free ? "Disponible pour une mission" : "Pas de dispo, trop de travail en ce moment 😮‍💨" }}</p>
     </div>
   </div>
   <FormModal :show="modalVisible" @update:show="modalVisible = $event" />

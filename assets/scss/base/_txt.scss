@@ -4,7 +4,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-inter;
+  font-family: $font-switzer;
 }
 
 h1 {
@@ -15,7 +15,7 @@ h1 {
 h2 {
   font-size: clamp(1rem, 1vw, 1rem);
   // line-height: clamp(2.5rem, 6vw, 4rem);
-  font-family: $font-inter;
+  font-family: $font-switzer;
   font-weight: $font-regular;
 }
 h3 {
@@ -30,49 +30,49 @@ h4 {
 }
 p {
   font-size: 1rem;
-  font-family: $font-inter;
+  font-family: $font-switzer;
   font-weight: $font-regular;
 }
 
 a {
-  font-family: $font-inter;
+  font-family: $font-switzer;
   font-weight: $font-regular;
 }
 
-.font-inter-thin {
-  font-family: $font-inter;
+.font-switzer-thin {
+  font-family: $font-switzer;
   font-weight: $font-thin;
 }
-.font-inter-extra-light {
-  font-family: $font-inter;
+.font-switzer-extra-light {
+  font-family: $font-switzer;
   font-weight: $font-extra-light;
 }
-.font-inter-light {
-  font-family: $font-inter;
+.font-switzer-light {
+  font-family: $font-switzer;
   font-weight: $font-light;
 }
-.font-inter-regular {
-  font-family: $font-inter;
+.font-switzer-regular {
+  font-family: $font-switzer;
   font-weight: $font-regular;
 }
-.font-inter-medium {
-  font-family: $font-inter;
+.font-switzer-medium {
+  font-family: $font-switzer;
   font-weight: $font-medium;
 }
-.font-inter-semi-bold {
-  font-family: $font-inter;
+.font-switzer-semi-bold {
+  font-family: $font-switzer;
   font-weight: $font-semi-bold;
 }
-.font-inter-bold {
-  font-family: $font-inter;
+.font-switzer-bold {
+  font-family: $font-switzer;
   font-weight: $font-bold;
 }
-.font-inter-extra-bold {
-  font-family: $font-inter;
+.font-switzer-extra-bold {
+  font-family: $font-switzer;
   font-weight: $font-extra-bold;
 }
-.font-inter-black {
-  font-family: $font-inter;
+.font-switzer-black {
+  font-family: $font-switzer;
   font-weight: $font-black;
 }
 

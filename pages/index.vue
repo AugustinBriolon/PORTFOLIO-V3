@@ -9,7 +9,9 @@
           <DarkMode />
         </div>
         <h1>Augustin Briolon</h1>
-        <h2>Je suis Augustin Briolon. Développeur sensible au design et toujours partant pour un nouveau projet ⬇️ ⬇️</h2>
+        <h2>Je suis Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants. 
+          Actif depuis <span class="dateValue" ref="dateValue"></span>.</h2>
+        <h2>Prêt à concrétiser votre projet ? Prenons contact ⬇️ ⬇️ </h2>
       </div>
       <div class="flex flex-col items-start">
         <Contact />
@@ -36,6 +38,27 @@ export default {
     computedProjects() {
       return useProjects().value;
     },
+    dateValue() {
+      const date1 = new Date("01/01/2020");
+      const date2 = new Date();
+      const diffTime = Math.abs(date2 - date1);
+      const diffHours = Math.ceil(diffTime / (1000 * 60 * 60)) + " heures";
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + " jours";
+      const diffYears = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 365)) + " ans";
+
+      const dateValue = [diffYears, diffDays, diffHours];
+      const dateText = this.$refs.dateValue
+
+      dateText.innerText = dateValue[0];
+      
+      setInterval(() => {
+        dateText.innerText = dateValue[1];
+        dateValue.push(dateValue.shift());
+      }, 5000);
+    },
+  },
+  mounted() {
+    this.dateValue;
   },
 };
 </script>
