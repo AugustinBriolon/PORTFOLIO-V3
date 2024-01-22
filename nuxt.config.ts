@@ -95,7 +95,7 @@ export default defineNuxtConfig({
         { rel: 'canonical', href: 'https://august1.dev' },
         {
           rel: 'preload',
-          href: '/fonts/Switzer.ttf',
+          href: '/fonts/Switzer-Variable.ttf',
           as: 'font',
           type: 'font/ttf',
           crossorigin: 'anonymous',
