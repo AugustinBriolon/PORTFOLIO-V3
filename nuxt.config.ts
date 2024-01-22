@@ -18,7 +18,7 @@ export default defineNuxtConfig({
           hid: 'description',
           name: 'description',
           content:
-            "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants. Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀",
+            "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants.",
         },
         {
           hid: 'keyword',
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
           hid: 'og:description',
           property: 'og:description',
           content:
-            "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants. Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀",
+            "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants.",
         },
         { hid: 'og:image', property: 'og:image', content: '/ogimage.png' },
         { hid: 'og:url', property: 'og:url', content: 'https://august1.dev' },
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
           hid: 'twitter:description',
           property: 'twitter:description',
           content:
-            "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants. Développeur Web Front-End expert avec 4 ans d'expérience 👨🏼‍💻. Passionné par le design, j'espère pouvoir travailler avec vous !  🚀",
+            "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants.",
         },
         {
           hid: 'twitter:image',
