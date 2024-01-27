@@ -10,7 +10,7 @@
 
       <div v-for="(projectTag, index) in uniqueTags" :key="index"
         class="flex flex-row items-center space-x-4 p-2 rounded-md cursor-pointer bg-white dark:bg-black border border-gray-300 dark:text-white"
-        :class="[{ 'border-gray-600 dark:border-dark-blue-light': projectTag === currentTag }]"
+        :class="[{ 'border-blue-dark dark:border-dark-blue-light': projectTag === currentTag }]"
         @click="filterProjects(projectTag)">
         <p class="uppercase">{{ projectTag }}</p>
       </div>

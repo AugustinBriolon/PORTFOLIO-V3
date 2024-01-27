@@ -13,8 +13,7 @@
           <p>Actif depuis</p>
           <p ref="dateValue" class="overflow-hidden text-blue-dark text-xl font-bold"></p>
         </div>
-        <h2>Je suis Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos envies en
-          sites performants !</h2>
+        <h2>Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants.</h2>
         <h2>Prêt à concrétiser votre projet ? Prenons contact ⬇️ ⬇️</h2>
 
       </div>
