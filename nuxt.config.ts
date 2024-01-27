@@ -7,7 +7,7 @@ export default defineNuxtConfig({
         lang: 'fr',
       },
       bodyAttrs: {
-        class:'bg-white dark:bg-black'
+        class:'bg-white dark:bg-black bg-svgBg dark:bg-svgBgDark'
       },
       meta: [
         { charset: 'utf-8' },
@@ -96,6 +96,13 @@ export default defineNuxtConfig({
         {
           rel: 'preload',
           href: '/fonts/Switzer-Variable.ttf',
+          as: 'font',
+          type: 'font/ttf',
+          crossorigin: 'anonymous',
+        },
+        {
+          rel: 'preload',
+          href: '/fonts/Antonio.ttf',
           as: 'font',
           type: 'font/ttf',
           crossorigin: 'anonymous',

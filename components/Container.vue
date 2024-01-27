@@ -1,5 +1,5 @@
 <template>
-  <component :is="linkType" :href="href" :class="`flex p-6 m-2 border border-gray-200 dark:border-gray-700 dark:bg-black shadow rounded-medium text-black dark:text-white bg-white ${customClass}`">
+  <component :is="linkType" :href="href" :class="`flex p-6 border border-gray-200 dark:border-gray-700 dark:bg-black shadow rounded-medium text-black dark:text-white bg-white ${customClass}`">
 
     <slot></slot>
   </component>

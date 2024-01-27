@@ -14,7 +14,6 @@ module.exports = {
       colors: {
         black: '#111113',
         'black-light': '#18191b',
-        white: '#f1f9fe',
         // GREEN
         'dark-green-light': '#6fd392',
         'dark-green-dark': '#1a2c24',
@@ -28,6 +27,7 @@ module.exports = {
         // BLUE
         'dark-blue-light': '#a1b0ff',
         'dark-blue-dark': '#1b2448',
+        'blue-default': '#2F80EC',
         'blue-light': '#eef2fd',
         'blue-dark': '#415ac1',
       },
@@ -47,6 +47,8 @@ module.exports = {
       backgroundImage: {
         'me': "url('/images/me.png')",
         'meComputer': "url('/images/meComputer.png')",
+        'svgBg': "url('/icons/background.svg')",
+        'svgBgDark': "url('/icons/background-black.svg')",
       },
       gridTemplateColumns: {
         'projets': '85px 85px 1fr',
