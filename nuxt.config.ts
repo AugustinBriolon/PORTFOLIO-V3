@@ -44,7 +44,7 @@ export default defineNuxtConfig({
           content:
             "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants.",
         },
-        { hid: 'og:image', property: 'og:image', content: '/ogimage.png' },
+        { hid: 'og:image', property: 'og:image', content: '/images/ogimage.png' },
         { hid: 'og:url', property: 'og:url', content: 'https://august1.dev' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
 
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
         {
           hid: 'twitter:image',
           property: 'twitter:image',
-          content: '/ogimage.png',
+          content: '/images/ogimage.png',
         },
         {
           hid: 'twitter:url',
