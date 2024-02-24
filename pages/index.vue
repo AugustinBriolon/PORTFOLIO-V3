@@ -10,7 +10,7 @@
         </div>
         <h1 class="text-blue-dark uppercase">Augustin Briolon</h1>
         <div class="h-8 box-content flex space-x-2">
-          <p>Actif depuis</p>
+          <p class="leading-8">Actif depuis</p>
           <p ref="dateValue" class="overflow-hidden text-blue-dark text-xl font-bold"></p>
         </div>
         <h2>Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées en sites performants.</h2>
@@ -80,40 +80,42 @@ export default {
 .word {
   display: block;
   height: 100%;
-  animation: spin_words 6s infinite;
+  animation: spin_words 8s infinite;
 }
 
 @keyframes spin_words {
-  10% {
-    transform: translateY(-112%);
+  0% {
+    transform: translateY(0);
   }
-
-  25% {
+  10% {
+    transform: translateY(0);
+  }
+  20% {
     transform: translateY(-100%);
   }
-
-  35% {
-    transform: translateY(-212%);
+  30% {
+    transform: translateY(-100%);
   }
-
+  40% {
+    transform: translateY(-200%);
+  }
   50% {
     transform: translateY(-200%);
   }
-
   60% {
-    transform: translateY(-312%);
-  }
-
-  75% {
     transform: translateY(-300%);
   }
-
-  85% {
-    transform: translateY(-412%);
+  70% {
+    transform: translateY(-300%);
   }
-
-  100% {
+  80% {
     transform: translateY(-400%);
+  }
+  90% {
+    transform: translateY(-400%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 </style>
