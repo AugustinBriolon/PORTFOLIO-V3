@@ -15,7 +15,8 @@
         <p class="uppercase">{{ projectTag }}</p>
       </div>
     </div>
-    <div class="mt-14 md:mt-[4.5rem] flex flex-col space-y-8">
+
+    <TransitionGroup name="list" tag="div" class="mt-14 md:mt-[4.5rem] flex flex-col space-y-8">
 
       <div
         class=" flex flex-col items-start rounded-xl p-4 space-y-6 cardProject h-fit bg-white dark:bg-black border border-gray-200 dark:border-gray-500"
@@ -45,12 +46,12 @@
             <div class="flex flex-col items-start justify-center col-span-2 sm:col-span-1 md:col-span-3 lg:col-auto">
               <p class="text-blue-dark dark:text-blue-dark text-sm">Description</p>
               <p class="line-clamp-1 text-black dark:text-blue-light" :title="project.descriptionfr">{{
-                project.descriptionfr }}</p>
+          project.descriptionfr }}</p>
             </div>
           </div>
         </a>
       </div>
-    </div>
+    </TransitionGroup>
   </div>
 </template>
 
@@ -123,5 +124,16 @@ export default {
 
 .bg-purple-card2 {
   background: #79ed754d;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: scale(0.5) translateY(50%);
 }
 </style>
