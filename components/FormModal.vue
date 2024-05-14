@@ -19,7 +19,7 @@
           </button>
         </div>
         <div class="p-4 md:p-5">
-          <div v-if="isFormSend" class="flex flex-col space-y-4">
+          <div v-if="isFormSend" class="flex flex-col gap-4">
             <div>
               <p class="text-black dark:text-white">Merci pour votre message, je vous recontacterai très vite !</p>
             </div>
@@ -28,7 +28,7 @@
               Fermer
             </button>
           </div>
-          <div v-else class="flex flex-col space-y-4">
+          <div v-else class="flex flex-col gap-4">
             <div class="flex flex-col sm:flex-row justify-between">
               <div>
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

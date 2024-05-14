@@ -1,5 +1,5 @@
 <template>
-  <div class="flex p-6 items-center justify-evenly space-x-8">
+  <div class="flex items-center justify-evenly gap-8">
     <a href="https://www.linkedin.com/in/augustin-briolon/" target="_blank" title="Lien vers Linkedin d'Augustin Briolon">
       <img src="/icons/linkedin.svg" alt="Logo Linkedin" class="dark-fill w-6 h-6">
     </a>

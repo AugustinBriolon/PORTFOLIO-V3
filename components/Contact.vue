@@ -1,9 +1,10 @@
 <template>
-  <div class="flex p-6 flex-col space-y-4">
+  <div class="flex flex-col gap-4">
     <div
-      class="flex flex-col sm:flex-row md:flex-col lg:flex-row space-x-0 sm:space-x-4 md:space-x-0 lg:space-x-4 space-y-4 sm:space-y-0 md:space-y-4 lg:space-y-0 cursor-pointer">
-      <div @click="handleCalendly" v-if="computedDispo.length !== 0 && computedDispo[0].free"
-        class="tremor w-fit flex items-center space-x-2 rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark ">
+      class="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-2 cursor-pointer"
+      v-if="computedDispo.length !== 0 && computedDispo[0].free">
+      <div @click="handleCalendly"
+        class="tremor w-fit flex items-center gap-2 rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark ">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
           <path
@@ -17,22 +18,27 @@
         </svg>
         <p>Prendre rdv</p>
       </div>
-      <div @click="openModal" v-if="computedDispo.length !== 0 && computedDispo[0].free"
-        class="tremor w-fit flex space-x-2 items-center rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark cursor-pointer">
-        <svg xmlns="http://www.w3.org/light0/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="w-6 h-6">
+      <div @click="openModal"
+        class="tremor w-fit flex gap-2 items-center rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark cursor-pointer">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
         </svg>
         <p>M'envoyer un mail</p>
       </div>
     </div>
-    <div v-if="computedDispo.length != 0"
-      class="w-fit py-1 px-2 rounded-md flex flex-row items-center justify-start space-x-4"
-      :class="computedDispo[0].free ? 'bg-green-light dark:bg-dark-green-dark text-green-dark dark:text-dark-green-light' : 'bg-red-light dark:bg-dark-red-dark text-red-dark dark:text-dark-red-light'">
-      <p>{{ computedDispo[0].free ? "Disponible pour une mission" : "Pas de dispo, trop de travail en ce moment 😮‍💨" }}
+
+    <div v-if="computedDispo.length != 0" class="w-fit flex items-center justify-start gap-2">
+      <div class="w-3 h-3 rounded-full relative" :class="computedDispo[0].free ? 'bg-green-dark dark:bg-dark-green-light' : 'bg-red-dark dark:bg-dark-red-light'">
+        <span class="animate-ping absolute h-full w-full rounded-full opacity-75" :class="computedDispo[0].free ? 'bg-green-dark dark:bg-dark-green-light' : 'bg-red-dark dark:bg-dark-red-light'"></span>
+      </div>
+      <p
+        :class="computedDispo[0].free ? 'text-green-dark dark:text-dark-green-light' : 'text-red-dark dark:text-dark-red-light'">
+        {{ computedDispo[0].free ? "Disponible pour une mission" : "Pas de dispo, trop de travail en ce moment 😮‍💨" }}
       </p>
     </div>
+
   </div>
   <FormModal :show="modalVisible" @update:show="modalVisible = $event" />
 </template>

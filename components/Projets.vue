@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col md:overflow-y-scroll md:max-h-screen noscroll px-6 py-6">
     <div
-      class="absolute top-0 left-0 z-20 w-[-webkit-fill-available] max-w-screen  pl-6 lg:pr-4 md:py-6 overflow-x-scroll flex noscroll space-x-2">
+      class="absolute top-0 left-0 z-20 w-[-webkit-fill-available] max-w-screen  pl-6 lg:pr-4 md:py-6 overflow-x-scroll flex noscroll gap-2">
       <div
         class="flex flex-row items-center p-2 border border-gray-300 dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer"
         @click="filterProjects(all)">
@@ -9,19 +9,19 @@
       </div>
 
       <div v-for="(projectTag, index) in uniqueTags" :key="index"
-        class="flex flex-row items-center space-x-4 p-2 rounded-md cursor-pointer bg-white dark:bg-black border border-gray-300 dark:text-white"
+        class="flex flex-row items-center gap-4 p-2 rounded-md cursor-pointer bg-white dark:bg-black border border-gray-300 dark:text-white"
         :class="[{ 'border-blue-dark dark:border-dark-blue-light': projectTag === currentTag }]"
         @click="filterProjects(projectTag)">
         <p class="uppercase">{{ projectTag }}</p>
       </div>
     </div>
 
-    <TransitionGroup name="list" tag="div" class="mt-14 md:mt-[4.5rem] flex flex-col space-y-8">
+    <TransitionGroup name="list" tag="div" class="mt-14 md:mt-[4.5rem] flex flex-col gap-8">
 
       <div
-        class=" flex flex-col items-start rounded-xl p-4 space-y-6 cardProject h-fit bg-white dark:bg-black border border-gray-200 dark:border-gray-500"
+        class=" flex flex-col items-start rounded-xl p-4 gap-6 cardProject h-fit bg-white dark:bg-black border border-gray-200 dark:border-gray-500"
         v-for="(project, index) in filteredProjects" :key="index">
-        <a :href="project.url" target="_blank" class="space-y-6 w-full">
+        <a :href="project.url" target="_blank" class="flex flex-col gap-6 w-full">
           <div class="w-full flex justify-between items-center">
             <div class="bg-white dark:bg-blue-light border border-gray-200 rounded-full p-1">
               <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-5 h-5" />
