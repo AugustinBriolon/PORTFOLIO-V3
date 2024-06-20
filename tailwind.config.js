@@ -25,10 +25,10 @@ module.exports = {
         'red-light': '#fceaf0',
         'red-dark': '#ba3263',
         // BLUE
+        'blue-default': '#2F80EC',
         'dark-blue-light': '#a1b0ff',
         'dark-blue-dark': '#1b2448',
-        'blue-default': '#2F80EC',
-        'blue-light': '#eef2fd',
+        'blue-light': '#DBEAFE75',
         'blue-dark': '#415ac1',
       },
       borderRadius: {

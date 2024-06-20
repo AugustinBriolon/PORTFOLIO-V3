@@ -23,7 +23,7 @@
         v-for="(project, index) in filteredProjects" :key="index">
         <a :href="project.url" target="_blank" class="flex flex-col gap-6 w-full">
           <div class="w-full flex justify-between items-center">
-            <div class="bg-white dark:bg-blue-light border border-gray-200 rounded-full p-1">
+            <div class="bg-white dark:bg-white border border-gray-200 rounded-full p-1">
               <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-5 h-5" />
             </div>
             <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -32,20 +32,20 @@
                 d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
             </svg>
           </div>
-          <h3 class="leading-none line-clamp-2 md:line-clamp-none text-black dark:text-blue-light">{{ project.title }}
+          <h3 class="leading-none line-clamp-2 md:line-clamp-none text-black dark:text-white">{{ project.title }}
           </h3>
           <div class="grid grid-cols-2 sm:grid-cols-projets items-start gap-6">
             <div class="flex flex-col items-start justify-center">
               <p class="text-blue-dark dark:text-blue-dark text-sm">Date</p>
-              <p class="whitespace-nowrap text-black dark:text-blue-light">{{ formatProjectDate[index] }}</p>
+              <p class="whitespace-nowrap text-black dark:text-white">{{ formatProjectDate[index] }}</p>
             </div>
             <div class="flex flex-col items-start justify-center">
               <p class="text-blue-dark dark:text-blue-dark text-sm">Type</p>
-              <p class="capitalize text-black dark:text-blue-light">{{ project.tag[0] }}</p>
+              <p class="capitalize text-black dark:text-white">{{ project.tag[0] }}</p>
             </div>
             <div class="flex flex-col items-start justify-center col-span-2 sm:col-span-1 md:col-span-3 lg:col-auto">
               <p class="text-blue-dark dark:text-blue-dark text-sm">Description</p>
-              <p class="line-clamp-1 text-black dark:text-blue-light" :title="project.descriptionfr">{{
+              <p class="line-clamp-1 text-black dark:text-white" :title="project.descriptionfr">{{
           project.descriptionfr }}</p>
             </div>
           </div>

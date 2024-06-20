@@ -4,7 +4,7 @@
       class="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-2 cursor-pointer"
       v-if="computedDispo.length !== 0 && computedDispo[0].free">
       <div @click="handleCalendly"
-        class="tremor w-fit flex items-center gap-2 rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark ">
+        class="tremor w-fit flex items-center gap-2 rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark/60">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="w-6 h-6">
           <path
@@ -19,7 +19,7 @@
         <p>Prendre rdv</p>
       </div>
       <div @click="openModal"
-        class="tremor w-fit flex gap-2 items-center rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark cursor-pointer">
+        class="tremor w-fit flex gap-2 items-center rounded-md px-2 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark/60">
         <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
           stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round"
