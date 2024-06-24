@@ -35,7 +35,7 @@
                   Prénom
                 </label>
                 <input type="name" name="name" id="" placeholder="John" ref="firstname"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-white dark:placeholder-gray-400 dark:text-black"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-black-light dark:placeholder-gray-400 dark:text-black"
                   required>
                 <span v-if="isError.firstname" class="!text-red-500 text-sm pt-2">Le prénom est requis</span>
               </div>
@@ -44,7 +44,7 @@
                   Nom
                 </label>
                 <input type="name" name="name" id="" placeholder="Doe" ref="lastname"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-white dark:placeholder-gray-400 dark:text-black"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-black-light dark:placeholder-gray-400 dark:text-black"
                   required>
               </div>
             </div>
@@ -53,7 +53,7 @@
                 Email
               </label>
               <input type="email" name="email" id="email" ref="email"
-                class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full p-2.5 dark:bg-white dark:placeholder-gray-400 dark:text-black"
+                class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg block w-full p-2.5 dark:bg-black-light dark:placeholder-gray-400 dark:text-black"
                 placeholder="johndoe@gmail.com" required>
               <span v-if="isError.email" class="!text-red-500 text-sm pt-2">Le mail est requis</span>
               <span v-if="isError.isValidEmail" class="!text-red-500 text-sm pt-2">Votre email n'est pas valide</span>
@@ -64,11 +64,11 @@
               </label>
               <textarea name="description" id="description" ref="description"
                 placeholder="Je souhaite faire un site vitrine pour mon entreprise"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-white dark:placeholder-gray-400 dark:text-black"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-black-light dark:placeholder-gray-400 dark:text-black"
                 required></textarea>
             </div>
             <button @click="sendEmail"
-              class="w-fit flex self-end items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark">
+              class="w-fit flex self-end items-center rounded-md px-4 py-2 text-blue-dark dark:text-dark-blue-light bg-blue-light dark:bg-dark-blue-dark/60">
               Envoyer
             </button>
           </div>
