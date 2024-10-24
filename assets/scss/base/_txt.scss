@@ -1,80 +1,30 @@
 h1 {
-  font-family: $font-antonio;
+  font-family: Antonio;
 }
+
 h2,
 h3,
 h4,
-h5,
-h6 {
-  font-family: $font-switzer;
+p,
+a {
+  font-family: Satoshi;
 }
 
 h1 {
   font-size: clamp(3rem, 5vw, 6rem);
-  // line-height: clamp(3.2rem, 7vw, 5.4rem);
   font-weight: bold;
 }
 h2 {
   font-size: clamp(1rem, 1vw, 1rem);
   // line-height: clamp(2.5rem, 6vw, 4rem);
-  font-family: $font-switzer;
-  font-weight: $font-regular;
 }
 h3 {
   font-size: clamp(2rem, 2vw, 2rem);
-  // line-height: clamp(2rem, 5vw, 3rem);
-  font-weight: $font-semi-bold;
+  font-weight: 700;
 }
 h4 {
   font-size: clamp(1.5rem, 3vw, 2rem);
   // line-height: clamp(1.5rem, 3vw, 2rem);
-  font-weight: $font-bold;
-}
-p {
-  font-size: 1rem;
-  font-family: $font-switzer;
-  font-weight: $font-regular;
 }
 
-a {
-  font-family: $font-switzer;
-  font-weight: $font-regular;
-}
-
-.font-switzer-thin {
-  font-family: $font-switzer;
-  font-weight: $font-thin;
-}
-.font-switzer-extra-light {
-  font-family: $font-switzer;
-  font-weight: $font-extra-light;
-}
-.font-switzer-light {
-  font-family: $font-switzer;
-  font-weight: $font-light;
-}
-.font-switzer-regular {
-  font-family: $font-switzer;
-  font-weight: $font-regular;
-}
-.font-switzer-medium {
-  font-family: $font-switzer;
-  font-weight: $font-medium;
-}
-.font-switzer-semi-bold {
-  font-family: $font-switzer;
-  font-weight: $font-semi-bold;
-}
-.font-switzer-bold {
-  font-family: $font-switzer;
-  font-weight: $font-bold;
-}
-.font-switzer-extra-bold {
-  font-family: $font-switzer;
-  font-weight: $font-extra-bold;
-}
-.font-switzer-black {
-  font-family: $font-switzer;
-  font-weight: $font-black;
-}
 

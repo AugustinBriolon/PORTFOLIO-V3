@@ -1,40 +1,28 @@
+/**
+* @license
+*
+* Font Family: Satoshi
+* Designed by: Deni Anggara
+* URL: https://www.fontshare.com/fonts/satoshi
+* © 2024 Indian Type Foundry
+*
+* Satoshi Variable (Variable font)
+
+*
+*/
 @font-face {
-  font-family: 'Switzer';
-  src: url('/fonts/Switzer-Variable.ttf') format('truetype');
-  font-weight: 125 950;
-  font-display: auto;
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Variable.woff') format('woff'),
+    url('/fonts/satoshi/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
 }
+
 @font-face {
   font-family: 'Antonio';
-  src: url('/fonts/Antonio.ttf') format('truetype');
+  src: url('/fonts/antonio/Antonio-Variable.ttf') format('truetype');
   font-weight: 125 950;
   font-display: auto;
 }
-
-// Colors
-$color-white: #f1f9fe;
-$color-black: #111113;
-
-// Fonts
-$font-switzer: 'Switzer';
-$font-antonio: 'Antonio';
-$font-thin: 100;
-$font-extra-light: 200;
-$font-light: 300;
-$font-regular: 400;
-$font-medium: 500;
-$font-semi-bold: 600;
-$font-bold: 700;
-$font-extra-bold: 800;
-$font-black: 900;
-
-// Radius
-$radius-small: 8px;
-$radius-medium: 14px;
-
-// Max Width
-$max-width: 1280px;
-
-// Padding
-$padding-x-default: clamp(20px, 8vw, 100px);
-$padding-y-default: clamp(20px, 8vh, 100px);

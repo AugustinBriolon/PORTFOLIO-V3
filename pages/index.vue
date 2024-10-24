@@ -1,44 +1,57 @@
 <template>
-  <section class="flex flex-col md:flex-row justify-between max-w-screen-2xl mx-auto min-h-screen lg:overflow-hidden">
-    <div class="flex flex-col w-full md:w-1/2 p-6 gap-8">
-      <div class="flex flex-col gap-4 text-black dark:text-white">
-        <div class="w-full flex items-start justify-between ">
-          <div
-            class="h-28 w-28 p-4 flex items-center justify-center bg-me dark:bg-meComputer bg-no-repeat bg-contain bg-center">
+  <section
+    class="relative h-screen max-w-screen-xl mx-auto p-4 md:p-4 w-full flex flex-col items-center gap-4 md:gap-8 overflow-hidden">
+    <Header />
+    <div class="w-full flex flex-col md:flex-row gap-8">
+      <div class="flex flex-col w-full md:w-1/2 gap-8">
+        <!-- <div class="hidden md:block h-11"></div> -->
+        <div class="flex flex-col items-start justify-center">
+          <div class="overflow-hidden">
+            <h1 class="text-blue-default dark:text-blue-dark uppercase text-anim-b">Augustin Briolon</h1>
           </div>
-          <DarkMode />
+          <div class="overflow-hidden">
+            <h2 class="text-xl font-semibold dark:text-white text-anim-b">Développeur Web</h2>
+          </div>
         </div>
-        <h1 class="text-blue-dark uppercase">Augustin Briolon</h1>
-        <div class="h-8 box-content flex gap-2">
-          <p class="leading-8">Actif depuis</p>
-          <p ref="dateValue" class="overflow-hidden text-blue-dark text-xl font-bold"></p>
+        <div class="flex flex-col gap-4 text-black dark:text-white">
+          <div class="overflow-hidden">
+            <div class="h-8 box-content flex gap-2 text-anim-b">
+              <p class="leading-8">Actif depuis</p>
+              <p ref="dateValue" class="overflow-hidden text-blue-default dark:text-blue-dark  text-xl font-bold"></p>
+            </div>
+          </div>
+          <div class="overflow-hidden">
+            <h2 ref="descriptionRef" class="text-pretty">
+              <span v-for="(word, index) in words" :key="index" class="inline-block overflow-hidden">
+                <span class="anim-text inline-block ">
+                  {{ word }}<span v-if="index !== words.length - 1">&nbsp;</span>
+                </span>
+              </span>
+            </h2>
+          </div>
         </div>
-        <h2>Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos idées
-          en sites performants.</h2>
-        <h2>Prêt à concrétiser votre projet ? Prenons contact ⬇️ ⬇️</h2>
-
+        <div class="flex flex-col items-start gap-8">
+          <Contact />
+        </div>
       </div>
-      <div class="flex flex-col items-start gap-8">
-        <Contact />
-        <div class="hidden md:block">
-          <Social />
-        </div>
+
+      <div class="flex flex-col w-full md:w-1/2 relative">
+        <Projets />
       </div>
     </div>
-
-    <div class="flex flex-col w-full md:w-1/2 relative">
-      <Projets />
-      <div class="flex flex-col items justify-center md:hidden mb-8">
-        <Social />
-      </div>
-    </div>
-
   </section>
 </template>
 
 <script>
+import { gsap } from "gsap";
+
 export default {
   name: "Index",
+  data() {
+    return {
+      words: "Portfolio d'Augustin Briolon. Développeur web de passion et spécialisé en front-end, je transforme vos projets en sites performants.".split(' ')
+    }
+  },
   computed: {
     computedProjects() {
       return useProjects().value;
@@ -63,10 +76,44 @@ export default {
         dateText.appendChild(span);
       });
     },
+    textAnimFromBottom() {
+      gsap.timeline()
+        .fromTo(
+          '.text-anim-b',
+          {
+            y: 100,
+          },
+          {
+            y: 0,
+            stagger: 0.01,
+            duration: 0.8,
+            ease: 'power2.out',
+          },
+        )
+    },
+    descriptionAppear() {
+      const descriptionRef = this.$refs.descriptionRef;
+      const descriptionWords = descriptionRef.querySelectorAll('.anim-text');
+
+      gsap.fromTo(
+        descriptionWords,
+        {
+          y: 100,
+        },
+        {
+          y: 0,
+          stagger: 0.01,
+          duration: 0.8,
+          ease: 'power2.out',
+        },
+      )
+    }
   },
   mounted() {
     this.dateValue;
-  },
+    this.textAnimFromBottom;
+    this.descriptionAppear;
+  }
 };
 </script>
 

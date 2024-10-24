@@ -1,69 +1,80 @@
 <template>
-  <div class="flex flex-col md:overflow-y-scroll md:max-h-screen noscroll px-6 py-6">
-    <div
-      class="absolute top-0 left-0 z-20 w-[-webkit-fill-available] max-w-screen  pl-6 lg:pr-4 md:py-6 overflow-x-scroll flex noscroll gap-2">
+  <div class="noscroll flex flex-col md:max-h-screen md:overflow-y-scroll">
+    <div class="max-w-screen noscroll absolute left-0 top-0 z-20 flex w-[-webkit-fill-available] justify-end gap-2">
       <div
-        class="flex flex-row items-center p-2 border border-gray-300 dark:border-white dark:text-white bg-white dark:bg-black rounded-md cursor-pointer"
-        @click="filterProjects(all)">
+        class="animate-in-left flex cursor-pointer flex-row items-center gap-4 rounded-xl bg-white p-2 ring-1 ring-gray-200 hover:ring-blue-default dark:bg-black dark:text-white"
+        :class="{ '!border-blue-500 !ring-blue-default': currentTag === 'all' }"
+        @click="filterProjects('all')" :style="{ animationDelay: `${0 * 0.1}s` }">
         <p class="uppercase">all</p>
       </div>
 
+
       <div v-for="(projectTag, index) in uniqueTags" :key="index"
-        class="flex flex-row items-center gap-4 p-2 rounded-md cursor-pointer bg-white dark:bg-black border border-gray-300 dark:text-white"
-        :class="[{ 'border-blue-dark dark:border-dark-blue-light': projectTag === currentTag }]"
-        @click="filterProjects(projectTag)">
+        class="animate-in-left flex cursor-pointer flex-row items-center gap-4 rounded-xl bg-white p-2 ring-1 ring-gray-200 hover:ring-blue-default dark:bg-black dark:text-white"
+        :class="{ '!border-blue-500 !ring-blue-default': currentTag === projectTag }"
+        @click="filterProjects(projectTag)"
+        :style="{ animationDelay: `${(index + 1) * 0.1}s` }">
         <p class="uppercase">{{ projectTag }}</p>
       </div>
     </div>
+    <div class="no-scrollbar mb-40 flex flex-col gap-8">
 
-    <TransitionGroup name="list" tag="div" class="mt-14 md:mt-[4.5rem] flex flex-col gap-8">
+      <div class="h-11"></div>
 
       <div
-        class=" flex flex-col items-start rounded-xl p-4 gap-6 cardProject h-fit bg-white dark:bg-black border border-gray-200 dark:border-gray-500"
-        v-for="(project, index) in filteredProjects" :key="index">
-        <a :href="project.url" target="_blank" class="flex flex-col gap-6 w-full">
-          <div class="w-full flex justify-between items-center">
-            <div class="bg-white dark:bg-white border border-gray-200 rounded-full p-1">
-              <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="w-5 h-5" />
+        class="animate-in cardProject flex h-fit cursor-pointer flex-col items-start gap-6 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-500 dark:bg-black"
+        v-for="(project, index) in filteredProjects" :key="index" @click="openModal(project)"
+        :style="{ animationDelay: `${index * animationDelayStep}s` }">
+        <div class="flex w-full flex-col gap-6">
+          <div class="flex w-full items-center justify-between">
+            <div class="rounded-md border border-gray-200 bg-white p-1 dark:bg-white">
+              <img :src="`https:${project.icon.fields.file.url}`" :alt="project.title" class="h-5 w-5 rounded-sm" />
             </div>
             <svg width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-              class="arrowIcon text-blue-dark dark:text-blue-dark">
+              class="arrowIcon text-blue-default dark:text-blue-dark">
               <path fill="currentColor"
                 d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
             </svg>
           </div>
-          <h3 class="leading-none line-clamp-2 md:line-clamp-none text-black dark:text-white">{{ project.title }}
+          <h3 class="line-clamp-2 leading-none text-black dark:text-white md:line-clamp-none">
+            {{ project.title }}
           </h3>
-          <div class="grid grid-cols-2 sm:grid-cols-projets items-start gap-6">
+          <div class="grid grid-cols-2 items-start gap-6 sm:grid-cols-projets">
             <div class="flex flex-col items-start justify-center">
-              <p class="text-blue-dark dark:text-blue-dark text-sm">Date</p>
-              <p class="whitespace-nowrap text-black dark:text-white">{{ formatProjectDate[index] }}</p>
+              <p class="text-sm font-bold text-blue-default dark:text-blue-dark">Date</p>
+              <p class="whitespace-nowrap text-black dark:text-white">
+                {{ formatProjectDate[index] }}
+              </p>
             </div>
             <div class="flex flex-col items-start justify-center">
-              <p class="text-blue-dark dark:text-blue-dark text-sm">Type</p>
+              <p class="text-sm font-bold text-blue-default dark:text-blue-dark">Type</p>
               <p class="capitalize text-black dark:text-white">{{ project.tag[0] }}</p>
             </div>
-            <div class="flex flex-col items-start justify-center col-span-2 sm:col-span-1 md:col-span-3 lg:col-auto">
-              <p class="text-blue-dark dark:text-blue-dark text-sm">Description</p>
-              <p class="line-clamp-1 text-black dark:text-white" :title="project.descriptionfr">{{
-          project.descriptionfr }}</p>
+            <div
+              class="col-span-2 hidden md:flex flex-col items-start justify-center sm:col-span-1 md:col-span-3 lg:col-auto">
+              <p class="text-sm font-bold text-blue-default dark:text-blue-dark">Description</p>
+              <p class="line-clamp-1 text-black dark:text-white" :title="project.description">
+                {{ project.description }}
+              </p>
             </div>
           </div>
-        </a>
+        </div>
       </div>
-    </TransitionGroup>
+    </div>
   </div>
+  <ProjectModal :show="modalVisible" @update:show="modalVisible = $event" :data="selectedProject" />
 </template>
 
 <script>
-const all = 'all';
-
 export default {
-  name: "Projets",
+  name: 'Projets',
   data() {
     return {
       currentTag: null,
       date: null,
+      modalVisible: false,
+      animationDelayStep: 0.1,
+      selectedProject: null,
     };
   },
   computed: {
@@ -85,30 +96,34 @@ export default {
     formatProjectDate() {
       return this.projects.map((project) => {
         const date = new Date(project.date);
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        const formatDate = new Intl.DateTimeFormat("fr-FR", options).format(date);
-        return formatDate
+        const options = { year: 'numeric', month: 'short' };
+        return new Intl.DateTimeFormat('fr-FR', options).format(date);
       });
     },
   },
   mounted() {
+    this.filterProjects('all');
     this.projects;
     this.uniqueTags;
     this.filteredProjects;
   },
   methods: {
+    openModal(project) {
+      this.selectedProject = project;
+      this.modalVisible = true;
+      document.body.classList.add('overflow-hidden');
+    },
     filterProjects(tag) {
-      if (tag === all) {
-        this.currentTag = null;
-        return;
-      }
       this.currentTag = tag;
     },
     computeFilteredProjects() {
-      return this.currentTag
-        ? this.projects.filter((project) => project.tag.includes(this.currentTag))
-        : this.projects;
-    },
+      if (!this.currentTag || this.currentTag === 'all') {
+        return this.projects;
+      }
+      return this.projects.filter((project) => {
+        return project.tag.includes(this.currentTag);
+      });
+    }
   },
 };
 </script>
@@ -133,7 +148,7 @@ export default {
 
 .list-enter,
 .list-leave-to {
-  opacity: 0;
   transform: scale(0.5) translateY(50%);
+  opacity: 0;
 }
 </style>

@@ -4,8 +4,30 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
+body {
+  background-image: linear-gradient(
+      to right,
+      #EEF2FD 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, #EEF2FD 1px, transparent 1px);
+  background-size: 25px 25px;
+  background-position: center;
+}
 
+.dark body {
+  background-image: linear-gradient(
+      to right,
+      #282828 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, #282828 1px, transparent 1px);
+}

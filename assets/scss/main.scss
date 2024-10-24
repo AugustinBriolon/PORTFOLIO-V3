@@ -1,4 +1,6 @@
-@import './abstracts/variables';
+@use './abstracts/variables' as *;
+@use './abstracts/animations' as *;
 
-@import './base/reset';
-@import './base/txt';
+@use './base/reset' as *;
+@use './base/txt' as *;
+

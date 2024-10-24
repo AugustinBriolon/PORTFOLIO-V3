@@ -7,7 +7,7 @@ export default defineNuxtConfig({
         lang: 'fr',
       },
       bodyAttrs: {
-        class:'bg-white dark:bg-black bg-svgBg dark:bg-svgBgDark'
+        class: 'bg-white dark:bg-black ',
       },
       meta: [
         { charset: 'utf-8' },
@@ -95,7 +95,7 @@ export default defineNuxtConfig({
         { rel: 'canonical', href: 'https://august1.dev' },
         {
           rel: 'preload',
-          href: '/fonts/Switzer-Variable.ttf',
+          href: '/fonts/Satoshi-Variable.ttf.ttf',
           as: 'font',
           type: 'font/ttf',
           crossorigin: 'anonymous',
@@ -138,14 +138,17 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   // PROD
-  // ssr: true,
+  ssr: true,
   // DEV
-  ssr: false,
+  // ssr: false,
+
   modules: ['nuxt-calendly'],
   devtools: { enabled: true },
   experimental: { appManifest: false },
   css: ['@/css/main.css'],
+
   vite: {
     resolve: {
       alias: {
@@ -154,12 +157,14 @@ export default defineNuxtConfig({
       },
     },
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   calendly: {
     /**
      * Setting to `false` disables the module.
@@ -180,4 +185,6 @@ export default defineNuxtConfig({
      */
     loadWidgetCloseIconSvg: true,
   },
+
+  compatibilityDate: '2024-10-18',
 });

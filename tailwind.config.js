@@ -12,7 +12,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        black: '#111113',
         'black-light': '#18191b',
         // GREEN
         'dark-green-light': '#6fd392',
@@ -25,11 +24,8 @@ module.exports = {
         'red-light': '#fceaf0',
         'red-dark': '#ba3263',
         // BLUE
-        'blue-default': '#2F80EC',
-        'dark-blue-light': '#a1b0ff',
-        'dark-blue-dark': '#1b2448',
-        'blue-light': '#DBEAFE75',
-        'blue-dark': '#415ac1',
+        'blue-default': '#415AC1',
+        'blue-dark': '#2F80EC'
       },
       borderRadius: {
         small: '8px',
