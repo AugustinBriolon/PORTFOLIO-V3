@@ -3,10 +3,10 @@
     <div class="flex items-center gap-4">
 
       <div @click="handleCalendly" @mouseover="handleHover" @mouseleave="resetHover"
-        class="calendly-logo logo-anim cursor-pointer flex items-center justify-center w-10 h-10 rounded-xl ring-1 hover:ring-2 ring-blue-default dark:ring-blue-dark text-blue-default dark:text-blue-dark backdrop-blur-sm">
+        class="calendly-logo cursor-pointer flex items-center justify-center w-10 h-10 rounded-xl ring-1 hover:ring-2 ring-blue-default dark:ring-blue-dark text-blue-default dark:text-blue-dark backdrop-blur-sm overflow-hidden">
 
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-anim">
           <path d="M8 2v4" />
           <path d="M16 2v4" />
           <rect width="18" height="18" x="3" y="4" rx="2" />
@@ -22,10 +22,9 @@
       </div>
 
       <div @click="openModal" @mouseover="handleHover" @mouseleave="resetHover"
-        class="mail-logo logo-anim cursor-pointer flex items-center justify-center w-10 h-10 rounded-xl ring-1 hover:ring-2 ring-blue-default dark:ring-blue-dark text-blue-default dark:text-blue-dark backdrop-blur-sm">
+        class="mail-logo cursor-pointer flex items-center justify-center w-10 h-10 rounded-xl ring-1 hover:ring-2 ring-blue-default dark:ring-blue-dark text-blue-default dark:text-blue-dark backdrop-blur-sm overflow-hidden">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-          class="lucide lucide-mail">
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-anim">
           <rect width="20" height="16" x="2" y="4" rx="2" />
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
         </svg>
@@ -41,22 +40,24 @@
 
     </div>
 
-    <div v-if="computedDispo.length != 0 && computedDispo[0].free" class="w-fit flex items-center justify-start gap-2">
-      <div class="w-3 h-3 rounded-full relative btn-anim bg-green-dark dark:bg-dark-green-light">
-        <span
-          class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-green-dark dark:bg-dark-green-light"></span>
+    <div v-if="computedDispo.length != 0">
+      <div v-if="computedDispo[0].free" class="w-fit flex items-center justify-start gap-2">
+        <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-green-dark dark:bg-dark-green-light">
+          <span
+            class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-green-dark dark:bg-dark-green-light"></span>
+        </div>
+        <p class="font-bold text-anim-l text-green-dark dark:text-dark-green-light">
+          Disponible pour une mission ! <span class="emoji-anim">🚀</span></p>
       </div>
-      <p class="font-bold text-anim-l text-green-dark dark:text-dark-green-light">
-        Disponible pour une mission ! <span class="emoji-anim">🚀</span></p>
-    </div>
 
-    <div v-else class="w-fit flex items-center justify-start gap-2">
-      <div class="w-3 h-3 rounded-full relative btn-anim bg-red-dark dark:bg-dark-red-light">
-        <span
-          class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-red-dark dark:bg-dark-red-light"></span>
+      <div v-else class="w-fit flex items-center justify-start gap-2">
+        <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-red-dark dark:bg-dark-red-light">
+          <span
+            class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-red-dark dark:bg-dark-red-light"></span>
+        </div>
+        <p class="font-bold text-anim-l text-red-dark dark:text-dark-red-light">"Pas de dispo, trop de travail en
+          ce moment 😮‍💨</p>
       </div>
-      <p class="font-bold text-anim-l text-red-dark dark:text-dark-red-light">"Pas de dispo, trop de travail en
-        ce moment 😮‍💨</p>
     </div>
 
   </div>
@@ -99,62 +100,73 @@ export default {
     computedDispo() {
       return useDispo().value;
     },
-    buttonPopUpAnimation() {
-      gsap.timeline({ delay: 0.5 }).fromTo(
+    logoAppearAnimation() {
+      gsap.fromTo(
         ".logo-anim",
-        { scale: 0 },
         {
-          duration: 0.5,
-          scale: 1.05,
-          ease: "back.out(1.7)",
+          y: 50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: .8,
+          ease: "power2.out",
         }
       )
-        .to(".logo-anim", {
-          duration: 0.3,
-          scale: 1,
-          ease: "power2.out",
-        });
     },
     textAnimFromLeft() {
-      gsap.timeline()
-        .fromTo(
-          '.text-anim-l',
-          {
-            x: -50,
-            opacity: 0,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            stagger: 0.01,
-            duration: 0.8,
-            ease: 'power2.out',
-          },
-        )
+      gsap.fromTo(
+        '.text-anim-l',
+        {
+          x: -50,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+        },
+      )
     },
-    buttonAnim() {
-      gsap.timeline()
-        .fromTo(
-          '.btn-anim',
-          {
-            scale: 0,
-          },
-          {
-            scale: 1,
-            stagger: 0.01,
-            duration: 0.8,
-            ease: 'power2.out',
-          },
-        )
+    dispoAnim() {
+      const ref = this.$refs.dispo;
+      if (!ref) return;
+      gsap.fromTo(
+        ref,
+        {
+          scale: 2,
+        },
+        {
+          scale: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+        },
+      )
     },
     emojiAnimRocket() {
       // when hover .emoji-anim => animate it
     }
   },
   mounted() {
-    this.buttonPopUpAnimation;
+    this.logoAppearAnimation;
     this.textAnimFromLeft;
-    this.buttonAnim;
+
+    if (this.computedDispo.length !== 0) {
+      this.$nextTick(() => {
+        this.dispoAnim;
+      });
+    }
   },
+
+  watch: {
+    computedDispo() {
+      this.$nextTick(() => {
+        this.dispoAnim;
+      });
+    }
+  }
+
 };
 </script>

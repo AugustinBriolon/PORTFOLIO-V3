@@ -1,10 +1,10 @@
 <template>
-  <div class="noscroll flex flex-col md:max-h-screen md:overflow-y-scroll">
+  <div class="noscroll flex flex-col md:max-h-screen md:overflow-y-scroll project-container" ref="projectContainer">
     <div class="max-w-screen noscroll absolute left-0 top-0 z-20 flex w-[-webkit-fill-available] justify-end gap-2">
       <div
         class="animate-in-left flex cursor-pointer flex-row items-center gap-4 rounded-xl bg-white p-2 ring-1 ring-gray-200 hover:ring-blue-default dark:bg-black dark:text-white"
-        :class="{ '!border-blue-500 !ring-blue-default': currentTag === 'all' }"
-        @click="filterProjects('all')" :style="{ animationDelay: `${0 * 0.1}s` }">
+        :class="{ '!border-blue-500 !ring-blue-default': currentTag === 'all' }" @click="filterProjects('all')"
+        :style="{ animationDelay: `${0 * 0.1}s` }">
         <p class="uppercase">all</p>
       </div>
 
@@ -12,19 +12,19 @@
       <div v-for="(projectTag, index) in uniqueTags" :key="index"
         class="animate-in-left flex cursor-pointer flex-row items-center gap-4 rounded-xl bg-white p-2 ring-1 ring-gray-200 hover:ring-blue-default dark:bg-black dark:text-white"
         :class="{ '!border-blue-500 !ring-blue-default': currentTag === projectTag }"
-        @click="filterProjects(projectTag)"
-        :style="{ animationDelay: `${(index + 1) * 0.1}s` }">
+        @click="filterProjects(projectTag)" :style="{ animationDelay: `${(index + 1) * 0.1}s` }">
         <p class="uppercase">{{ projectTag }}</p>
       </div>
     </div>
-    <div class="no-scrollbar mb-40 flex flex-col gap-8">
+
+    <div class="no-scrollbar mb-40 flex flex-col gap-4">
 
       <div class="h-11"></div>
 
       <div
-        class="animate-in cardProject flex h-fit cursor-pointer flex-col items-start gap-6 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-500 dark:bg-black"
-        v-for="(project, index) in filteredProjects" :key="index" @click="openModal(project)"
-        :style="{ animationDelay: `${index * animationDelayStep}s` }">
+        class="cardProject flex h-fit cursor-pointer flex-col items-start gap-6 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-500 dark:bg-black"
+        :class="{ 'tets-project': index === 0 }" v-for="(project, index) in filteredProjects" :key="index" ref="project" 
+        @click="openModal(project)" :style="{ animationDelay: `${index * animationDelayStep}s`, zIndex: `${index}` }">
         <div class="flex w-full flex-col gap-6">
           <div class="flex w-full items-center justify-between">
             <div class="rounded-md border border-gray-200 bg-white p-1 dark:bg-white">
@@ -60,12 +60,17 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
   <ProjectModal :show="modalVisible" @update:show="modalVisible = $event" :data="selectedProject" />
 </template>
 
 <script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 export default {
   name: 'Projets',
   data() {
@@ -100,6 +105,27 @@ export default {
         return new Intl.DateTimeFormat('fr-FR', options).format(date);
       });
     },
+    animatedProjectDiv() {
+      const projectContainer = this.$refs.projectContainer;
+      const projectDiv = this.$refs.project;
+
+      projectDiv.forEach((project) => {
+        gsap.to(project, {
+          scale: 0,
+          y: -175,
+          ease: 'power4.inOut',
+          scrollTrigger: {
+            scroller: projectContainer,
+            trigger: project,
+            // markers: true,
+            scrub: true,
+            pin: true,
+            start: 'top 5.8%',
+            end: `+=${project.clientHeight * 5}`,
+          },
+        });
+      });
+    }
   },
   mounted() {
     this.filterProjects('all');
@@ -116,15 +142,26 @@ export default {
     filterProjects(tag) {
       this.currentTag = tag;
     },
-    computeFilteredProjects() {
+    computeFilteredProjects(project) {
       if (!this.currentTag || this.currentTag === 'all') {
         return this.projects;
       }
       return this.projects.filter((project) => {
         return project.tag.includes(this.currentTag);
       });
+      // if (!this.currentTag || this.currentTag === 'all') {
+      //   return false;
+      // }
+      // return !project.tag.includes(this.currentTag);
     }
   },
+  watch: {
+    projects() {
+      this.$nextTick(() => {
+        this.animatedProjectDiv;
+      });
+    }
+  }
 };
 </script>
 

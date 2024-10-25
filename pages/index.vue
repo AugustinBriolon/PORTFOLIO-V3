@@ -77,19 +77,18 @@ export default {
       });
     },
     textAnimFromBottom() {
-      gsap.timeline()
-        .fromTo(
-          '.text-anim-b',
-          {
-            y: 100,
-          },
-          {
-            y: 0,
-            stagger: 0.01,
-            duration: 0.8,
-            ease: 'power2.out',
-          },
-        )
+      gsap.fromTo(
+        '.text-anim-b',
+        {
+          y: 100,
+        },
+        {
+          y: 0,
+          stagger: 0.01,
+          duration: 0.8,
+          ease: 'power2.out',
+        },
+      )
     },
     descriptionAppear() {
       const descriptionRef = this.$refs.descriptionRef;

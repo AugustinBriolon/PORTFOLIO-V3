@@ -101,13 +101,6 @@ export default defineNuxtConfig({
           crossorigin: 'anonymous',
         },
         {
-          rel: 'preload',
-          href: '/fonts/Antonio.ttf',
-          as: 'font',
-          type: 'font/ttf',
-          crossorigin: 'anonymous',
-        },
-        {
           rel: 'shortcut icon',
           href: '/favicon/favicon.ico',
           type: 'image/x-icon',
@@ -140,9 +133,9 @@ export default defineNuxtConfig({
   },
 
   // PROD
-  ssr: true,
+  // ssr: true,
   // DEV
-  // ssr: false,
+  ssr: false,
 
   modules: ['nuxt-calendly'],
   devtools: { enabled: true },
