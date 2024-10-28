@@ -36,14 +36,14 @@
 
           <div v-if="getDispo.length">
             <div v-if="getDispo[0].free" class="w-fit flex items-center justify-start gap-2">
-              <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-green-dark dark:bg-dark-green-light">
+              <div ref="dispo" class="w-2 h-2 rounded-full relative  bg-green-dark dark:bg-dark-green-light">
                 <span
                   class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-green-dark dark:bg-dark-green-light"></span>
               </div>
             </div>
 
             <div v-else class="w-fit flex items-center justify-start gap-2">
-              <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-red-dark dark:bg-dark-red-light">
+              <div ref="dispo" class="w-2 h-2 rounded-full relative  bg-red-dark dark:bg-dark-red-light">
                 <span
                   class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-red-dark dark:bg-dark-red-light"></span>
               </div>

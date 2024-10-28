@@ -31,7 +31,7 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.getItem("darkMode") === "true") {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches || localStorage.getItem("darkMode") === "true") {
       document.querySelector("html").classList.add("dark");
       this.darkMode = true;
     }

@@ -1,11 +1,11 @@
 <template>
-  <div class="no-scrollbar h-full flex flex-col md:max-h-screen md:overflow-y-scroll project-container" ref="projectContainer">
+  <div class="no-scrollbar h-full flex flex-col md:max-h-screen md:overflow-y-scroll project-container"
+    ref="projectContainer">
     <div class="mb-40 flex flex-col gap-4">
 
       <div
         class="cardProject flex h-fit cursor-pointer flex-col items-start gap-6 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-500 dark:bg-black"
-        :class="{ 'tets-project': index === 0 }" v-for="(project, index) in getProjects" :key="index" ref="project"
-        @click="openModal(project)" :style="{ zIndex: `${index}` }">
+        v-for="(project, index) in getProjects" :key="index" ref="project" @click="openModal(project)">
         <div class="flex w-full flex-col gap-6">
           <div class="flex w-full items-center justify-between">
             <div class="rounded-md border border-gray-200 bg-white p-1 dark:bg-white">
@@ -77,17 +77,18 @@ export default {
       const projectDiv = this.$refs.project;
 
       if (window.innerWidth > 768) {
-        projectDiv.forEach((project) => {
+        projectDiv.forEach((project, index) => {
           gsap.to(project, {
             scale: 0,
             y: 0,
-            ease: 'power4.inOut',
+            ease: 'power1.in',
             scrollTrigger: {
               scroller: projectContainer,
               trigger: project,
-              // markers: true,
               scrub: true,
               pin: true,
+              pinSpacing: false,
+              anticipatePin: 1,
               start: 'top top',
               end: `+=${project.clientHeight * 3}`,
             },
