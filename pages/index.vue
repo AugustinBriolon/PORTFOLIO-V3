@@ -1,8 +1,9 @@
 <template>
   <section
-    class="h-screen max-h-fit max-w-screen-xl mx-auto p-4 md:p-4 w-full flex flex-col items-center gap-4 md:gap-8 ">
+    class="h-screen max-h-fit max-w-screen-xl mx-auto w-full flex flex-col items-center ">
     <Header />
-    <div class="w-full flex flex-col md:flex-row gap-8">
+
+    <div class="w-full flex flex-col md:flex-row gap-8 h-[90vh] px-2 md:px-4">
       <div class="flex flex-col w-full md:w-1/2 gap-8">
         <!-- <div class="hidden md:block h-11"></div> -->
         <div class="flex flex-col items-start justify-center">
@@ -35,7 +36,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col w-full md:w-1/2 relative">
+      <div class="flex flex-col w-full md:w-1/2 h-full">
         <Projets />
       </div>
     </div>

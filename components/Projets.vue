@@ -1,8 +1,6 @@
 <template>
-  <div class="no-scrollbar flex flex-col md:max-h-screen md:overflow-y-scroll project-container" ref="projectContainer">
-    <div class="no-scrollbar mb-40 flex flex-col gap-4">
-
-      <div class="sm:h-11"></div>
+  <div class="no-scrollbar h-full flex flex-col md:max-h-screen md:overflow-y-scroll project-container" ref="projectContainer">
+    <div class="mb-40 flex flex-col gap-4">
 
       <div
         class="cardProject flex h-fit cursor-pointer flex-col items-start gap-6 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-500 dark:bg-black"
@@ -44,7 +42,6 @@
         </div>
       </div>
 
-
     </div>
   </div>
   <ProjectModal :show="modalVisible" @update:show="modalVisible = $event" :data="selectedProject" />
@@ -78,8 +75,8 @@ export default {
     animatedProjectDiv() {
       const projectContainer = this.$refs.projectContainer;
       const projectDiv = this.$refs.project;
-      // make a object with data to change when window.width change and become mobile
-      if (window.innerWidth < 768) {
+
+      if (window.innerWidth > 768) {
         projectDiv.forEach((project) => {
           gsap.to(project, {
             scale: 0,
@@ -96,24 +93,14 @@ export default {
             },
           });
         });
-      } else {
-        projectDiv.forEach((project) => {
-          gsap.to(project, {
-            scale: 0,
-            y: -175,
-            ease: 'power4.inOut',
-            scrollTrigger: {
-              scroller: projectContainer,
-              trigger: project,
-              // markers: true,
-              scrub: true,
-              pin: true,
-              start: 'top 5.8%',
-              end: `+=${project.clientHeight * 5}`,
-            },
-          });
-        });
       }
+
+      gsap.from(projectDiv, {
+        opacity: 0,
+        y: 50,
+        stagger: 0.05,
+        ease: 'power4.inOut',
+      });
     }
   },
   mounted() {
