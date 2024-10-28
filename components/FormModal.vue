@@ -1,45 +1,27 @@
 <template>
-  <div
-    v-show="show"
-    @click="closeIfOutside"
-    tabindex="-1"
-    aria-hidden="true"
-    data-modal="authentication-modal"
-    class="fixed left-0 right-0 top-0 z-30 m-0 h-screen max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-gray-700/50 md:inset-0"
-    :class="show ? 'flex' : 'hidden'"
-  >
+  <div v-show="show" @click="closeIfOutside" tabindex="-1" aria-hidden="true" data-modal="authentication-modal"
+    class="fixed left-0 right-0 top-0 z-30 m-0 flex h-screen max-h-full w-full items-end md:items-center justify-center overflow-y-auto overflow-x-hidden bg-gray-700/50 backdrop-blur-sm p-0 md:p-24 transition-[opacity,visibility] inset-0"
+    :class="show ? 'visible opacity-100' : 'invisible opacity-0'">
+
     <div class="max-h-full w-full max-w-md p-4">
+
       <div class="rounded-lg border bg-white shadow dark:border-slate-500 dark:bg-black-light">
-        <div
-          class="flex items-center justify-between rounded-t border-b p-4 dark:border-slate-500 md:p-5"
-        >
+
+        <div class="flex items-center justify-between rounded-t border-b p-4 dark:border-slate-500 md:p-5">
           <h3 class="text-xl font-semibold text-black dark:text-white">
             {{ isFormSend ? 'À très vite !' : 'Rentrons en contact' }}
           </h3>
-          <button
-            type="button"
-            @click="close"
+          <button type="button" @click="close"
             class="end-2.5 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
-            data-modal-hide="authentication-modal"
-          >
-            <svg
-              class="h-3 w-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-              />
+            data-modal-hide="authentication-modal">
+            <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
             </svg>
             <span class="sr-only">Close modal</span>
           </button>
         </div>
+        
         <div class="p-4 md:p-5">
           <div v-if="isFormSend" class="flex flex-col gap-4">
             <div>
@@ -47,99 +29,61 @@
                 Merci pour votre message, je vous recontacterai très vite !
               </p>
             </div>
-            <button
-              @click="close"
-              class="flex w-fit items-center self-end rounded-md bg-red-light px-4 py-2 text-red-dark dark:bg-dark-red-dark dark:text-dark-red-light"
-            >
+            <button @click="close"
+              class="flex w-fit items-center self-end rounded-md bg-red-light px-4 py-2 text-red-dark dark:bg-dark-red-dark dark:text-dark-red-light">
               Fermer
             </button>
           </div>
           <div v-else class="flex flex-col gap-4">
             <div class="flex flex-col justify-between sm:flex-row">
               <div>
-                <label
-                  for="name"
-                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
+                <label for="name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                   Prénom
                 </label>
-                <input
-                  type="name"
-                  name="name"
-                  id=""
-                  placeholder="John"
-                  ref="firstname"
+                <input type="name" name="name" id="" placeholder="John" ref="firstname"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-black-light dark:text-black dark:placeholder-gray-400"
-                  required
-                />
-                <span v-if="isError.firstname" class="pt-2 text-sm !text-red-500"
-                  >Le prénom est requis</span
-                >
+                  required />
+                <span v-if="isError.firstname" class="pt-2 text-sm !text-red-500">Le prénom est requis</span>
               </div>
               <div>
-                <label
-                  for="name"
-                  class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
+                <label for="name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                   Nom
                 </label>
-                <input
-                  type="name"
-                  name="name"
-                  id=""
-                  placeholder="Doe"
-                  ref="lastname"
+                <input type="name" name="name" id="" placeholder="Doe" ref="lastname"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-black-light dark:text-black dark:placeholder-gray-400"
-                  required
-                />
+                  required />
               </div>
             </div>
             <div>
               <label for="email" class="mb-2 block text-sm font-medium text-black dark:text-white">
                 Email
               </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                ref="email"
+              <input type="email" name="email" id="email" ref="email"
                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-black dark:bg-black-light dark:text-black dark:placeholder-gray-400"
-                placeholder="johndoe@gmail.com"
-                required
-              />
-              <span v-if="isError.email" class="pt-2 text-sm !text-red-500"
-                >Le mail est requis</span
-              >
-              <span v-if="isError.isValidEmail" class="pt-2 text-sm !text-red-500"
-                >Votre email n'est pas valide</span
-              >
+                placeholder="johndoe@gmail.com" required />
+              <span v-if="isError.email" class="pt-2 text-sm !text-red-500">Le mail est requis</span>
+              <span v-if="isError.isValidEmail" class="pt-2 text-sm !text-red-500">Votre email n'est pas valide</span>
             </div>
             <div>
-              <label
-                for="description"
-                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-              >
+              <label for="description" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                 Décrivez votre Projet
               </label>
-              <textarea
-                name="description"
-                id="description"
-                ref="description"
+              <textarea name="description" id="description" ref="description"
                 placeholder="Je souhaite faire un site vitrine pour mon entreprise"
                 class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-black-light dark:text-black dark:placeholder-gray-400"
-                required
-              ></textarea>
+                required></textarea>
             </div>
-            <button
-              @click="sendEmail"
-              class="bg-blue-light dark:bg-dark-blue-dark/60 flex w-fit items-center self-end rounded-md px-4 py-2 text-blue-default dark:text-blue-dark"
-            >
+            <button @click="sendEmail"
+              class="bg-blue-light dark:bg-dark-blue-dark/60 flex w-fit items-center self-end rounded-md px-4 py-2 text-blue-default dark:text-blue-dark">
               Envoyer
             </button>
           </div>
         </div>
+
       </div>
+
     </div>
+
   </div>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
-  <div @click="closeIfOutside" role="dialog" tabindex="-1" aria-hidden="true" aria-modal="true"
+  <div @click="closeIfOutside" role="dialog" tabindex="-1" aria-modal="true"
     class="fixed left-0 right-0 top-0 z-30 m-0 flex h-screen max-h-full w-full items-end md:items-center justify-center overflow-y-auto overflow-x-hidden bg-gray-700/50 backdrop-blur-sm p-0 md:p-24 transition-[opacity,visibility] inset-0"
     :class="show ? 'visible opacity-100' : 'invisible opacity-0'">
 
     <div
-      class="no-scrollbar flex h-[80%] md:h-full w-full max-w-screen-md flex-col items-start justify-start gap-10 overflow-x-scroll rounded-t-lg md:rounded-lg bg-white p-4 transition-transform border dark:bg-black "
+      class="no-scrollbar flex h-[80%] md:h-full w-full max-w-screen-md flex-col items-start justify-start gap-10 overflow-x-scroll rounded-t-lg md:rounded-lg bg-white p-4 transition-transform border dark:border-gray-500 dark:bg-black "
       v-if="data"
       :class="show ? (isMobile ? 'translate-y-0' : 'scale-100') : (isMobile ? 'translate-y-full' : 'scale-50')">
       <div class="flex flex-col md:flex-row w-full items-start md:items-center justify-between">
@@ -14,24 +14,14 @@
             {{ formattedDate }}
           </p>
         </div>
-        <div class="flex items-center justify-between w-full md:w-fit gap-4">
-          <a :href="data.url" rel="noopener noreferrer" target="_blank" title="Lien vers Github d'Augustin Briolon"
+        <div class="flex items-center justify-end w-full md:w-fit gap-4">
+          <a v-if="data.repoUrl" :href="data.repoUrl" rel="noopener noreferrer" target="_blank" title="Lien vers Github d'Augustin Briolon"
             class="flex aspect-square items-center justify-center rounded-full p-4 hover:bg-black/5 dark:hover:bg-white/10 sm:bg-transparent">
             <img src="/icons/github.svg" alt="Logo Github" class="dark-fill h-5 w-5 select-none" />
           </a>
 
           <a :href="data.url" rel="noopener noreferrer" target="_blank"
-            class="sm:hidden ease-out-quad group flex h-12 w-12 select-none items-center justify-center gap-2 rounded-full bg-black font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-              class="rotate-[135deg] transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105">
-              <path d="m12 19-7-7 7-7" />
-              <path d="M19 12H5" />
-            </svg>
-          </a>
-
-          <a :href="data.url" rel="noopener noreferrer" target="_blank"
-            class="ease-out-quad group flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 max-sm:hidden ">
+            class="group flex h-12 select-none items-center justify-center gap-2 rounded-full bg-black px-7 font-medium text-white transition hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200">
             Visiter
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"

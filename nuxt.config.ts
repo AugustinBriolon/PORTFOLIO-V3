@@ -133,9 +133,9 @@ export default defineNuxtConfig({
   },
 
   // PROD
-  // ssr: true,
+  ssr: true,
   // DEV
-  ssr: false,
+  // ssr: false,
 
   modules: ['nuxt-calendly'],
   devtools: { enabled: true },

@@ -47,6 +47,7 @@ const fetchProjects = async ($client) => {
       image: item.fields.img,
       icon: item.fields.icon,
       url: item.fields.url,
+      repoUrl: item.fields.repoUrl,
       tag: item.fields.tag,
       date: item.fields.date,
       techno: item.fields.techno,

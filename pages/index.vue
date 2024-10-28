@@ -1,6 +1,6 @@
 <template>
   <section
-    class="h-screen max-h-fit max-w-screen-xl mx-auto w-full flex flex-col items-center ">
+    class="h-screen max-h-fit max-w-screen-xl mx-auto w-full flex flex-col items-center">
     <Header />
 
     <div class="w-full flex flex-col md:flex-row gap-8 h-[90vh] px-2 md:px-4">

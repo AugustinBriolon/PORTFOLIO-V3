@@ -4,7 +4,7 @@
 
       <div
         class="cardProject flex h-fit cursor-pointer flex-col items-start gap-6 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-500 dark:bg-black"
-        :class="{ 'tets-project': index === 0 }" v-for="(project, index) in projects" :key="index" ref="project"
+        :class="{ 'tets-project': index === 0 }" v-for="(project, index) in getProjects" :key="index" ref="project"
         @click="openModal(project)" :style="{ zIndex: `${index}` }">
         <div class="flex w-full flex-col gap-6">
           <div class="flex w-full items-center justify-between">
@@ -62,11 +62,11 @@ export default {
     };
   },
   computed: {
-    projects() {
+    getProjects() {
       return useProjects().value;
     },
     formatProjectDate() {
-      return this.projects.map((project) => {
+      return this.getProjects.map((project) => {
         const date = new Date(project.date);
         const options = { year: 'numeric', month: 'short' };
         return new Intl.DateTimeFormat('fr-FR', options).format(date);
@@ -98,13 +98,14 @@ export default {
       gsap.from(projectDiv, {
         opacity: 0,
         y: 50,
+        duration: 1,
         stagger: 0.05,
-        ease: 'power4.inOut',
+        ease: 'power4.out',
       });
     }
   },
   mounted() {
-    this.projects;
+    this.getProjects;
   },
   methods: {
     openModal(project) {
@@ -114,7 +115,7 @@ export default {
     },
   },
   watch: {
-    projects() {
+    getProjects() {
       this.$nextTick(() => {
         this.animatedProjectDiv;
       });

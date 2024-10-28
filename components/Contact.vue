@@ -31,7 +31,26 @@
       </div>
 
       <div class="flex flex-col items-start h-full text-anim-l">
-        <p class="text-black dark:text-white">Rentrons en contact !</p>
+        <div class="flex items-center gap-2">
+          <p class="text-black dark:text-white">Rentrons en contact</p>
+
+          <div v-if="getDispo.length">
+            <div v-if="getDispo[0].free" class="w-fit flex items-center justify-start gap-2">
+              <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-green-dark dark:bg-dark-green-light">
+                <span
+                  class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-green-dark dark:bg-dark-green-light"></span>
+              </div>
+            </div>
+
+            <div v-else class="w-fit flex items-center justify-start gap-2">
+              <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-red-dark dark:bg-dark-red-light">
+                <span
+                  class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-red-dark dark:bg-dark-red-light"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
         <p class="canal-hover min-h-4 text-blue-default dark:text-blue-dark"
           :class="{ 'font-bold': canalHover !== 'Dès maintenant' }">
           {{ canalHover }}
@@ -40,25 +59,7 @@
 
     </div>
 
-    <div v-if="computedDispo.length != 0">
-      <div v-if="computedDispo[0].free" class="w-fit flex items-center justify-start gap-2">
-        <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-green-dark dark:bg-dark-green-light">
-          <span
-            class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-green-dark dark:bg-dark-green-light"></span>
-        </div>
-        <p class="font-bold text-anim-l text-green-dark dark:text-dark-green-light">
-          Disponible pour une mission ! <span class="emoji-anim">🚀</span></p>
-      </div>
 
-      <div v-else class="w-fit flex items-center justify-start gap-2">
-        <div ref="dispo" class="w-3 h-3 rounded-full relative  bg-red-dark dark:bg-dark-red-light">
-          <span
-            class="animate-ping absolute h-full w-full rounded-full opacity-75 bg-red-dark dark:bg-dark-red-light"></span>
-        </div>
-        <p class="font-bold text-anim-l text-red-dark dark:text-dark-red-light">"Pas de dispo, trop de travail en
-          ce moment 😮‍💨</p>
-      </div>
-    </div>
 
   </div>
   <FormModal :show="modalVisible" @update:show="modalVisible = $event" />
@@ -97,7 +98,7 @@ export default {
     },
   },
   computed: {
-    computedDispo() {
+    getDispo() {
       return useDispo().value;
     },
     logoAppearAnimation() {
@@ -136,11 +137,12 @@ export default {
       gsap.fromTo(
         ref,
         {
-          scale: 2,
+          scale: 0,
         },
         {
           scale: 1,
-          duration: 0.8,
+          delay: .5,
+          duration: 1,
           ease: 'power2.out',
         },
       )
@@ -153,7 +155,7 @@ export default {
     this.logoAppearAnimation;
     this.textAnimFromLeft;
 
-    if (this.computedDispo.length !== 0) {
+    if (this.getDispo.length !== 0) {
       this.$nextTick(() => {
         this.dispoAnim;
       });
@@ -161,7 +163,7 @@ export default {
   },
 
   watch: {
-    computedDispo() {
+    getDispo() {
       this.$nextTick(() => {
         this.dispoAnim;
       });
