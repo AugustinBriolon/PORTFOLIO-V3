@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative h-screen max-w-screen-xl mx-auto p-4 md:p-4 w-full flex flex-col items-center gap-4 md:gap-8 overflow-hidden">
+    class="h-screen max-h-fit max-w-screen-xl mx-auto p-4 md:p-4 w-full flex flex-col items-center gap-4 md:gap-8 ">
     <Header />
     <div class="w-full flex flex-col md:flex-row gap-8">
       <div class="flex flex-col w-full md:w-1/2 gap-8">
@@ -119,10 +119,6 @@ export default {
 <style>
 .dark .dark-fill {
   filter: invert(1) grayscale(100%) brightness(1.5);
-}
-
-.noscroll::-webkit-scrollbar {
-  display: none;
 }
 
 .word {
